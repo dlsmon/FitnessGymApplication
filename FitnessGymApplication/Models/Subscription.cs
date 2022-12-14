@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GYM_FITNESS.Models
+namespace FitnessGymApplicationS.Models
 {
     public class Subscription
     {

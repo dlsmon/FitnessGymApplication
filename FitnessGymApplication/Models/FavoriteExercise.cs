@@ -2,11 +2,11 @@
 
 namespace FitnessGymApplication.Models
 {
-    public class FavoriteExercice
+    public class FavoriteExercise
     {
         public int Id { get; set; }      
         public int IdClient { get; set; }
-        public int IdExercice { get; set; }
+        public int IdExercise { get; set; }
 
         //ForeignKey - relations properties
 
