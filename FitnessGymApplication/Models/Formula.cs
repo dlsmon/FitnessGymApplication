@@ -1,4 +1,5 @@
-﻿namespace GYM_FITNESS.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace FitnessGymApplication.Models
 {
     public class Formula
     {

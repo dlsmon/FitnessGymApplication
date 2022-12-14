@@ -1,4 +1,7 @@
-﻿namespace GYM_FITNESS.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FitnessGymApplication.Models
 {
     public class Location
     {
