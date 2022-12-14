@@ -7,7 +7,10 @@ namespace FitnessGymApplication.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Photo { get; set; }
-        [ForeignKey]
+
+        public int IdLocation; 
+        [ForeignKey("IdLocation")]
+
         public ICollection<Location> Locations { get; set; }
     }
 }
