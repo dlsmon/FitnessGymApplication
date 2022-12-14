@@ -1,4 +1,4 @@
-﻿namespace GYM_FITNESS.Models
+﻿namespace FitnessGymApplication.Models
 {
     public class Location
     {
