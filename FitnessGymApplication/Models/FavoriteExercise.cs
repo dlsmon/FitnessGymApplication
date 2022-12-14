@@ -13,7 +13,7 @@ namespace FitnessGymApplication.Models
         [ForeignKey("IdClient")]
         public virtual Client? Client { get; set; }
 
-        [ForeignKey("IdExercice")]
-        public virtual Exercice? Exercice { get; set; }
+        [ForeignKey("IdExercise")]
+        public virtual Exercise? Exercise { get; set; }
     }
 }
