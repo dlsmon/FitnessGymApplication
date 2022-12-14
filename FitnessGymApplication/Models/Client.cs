@@ -13,7 +13,9 @@ namespace FitnessGymApplication.Models
         }
 
         public int Id { get; set; }
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public eSex Sex { get; set; }
         public int? Height { get; set; }
@@ -21,6 +23,7 @@ namespace FitnessGymApplication.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", NullDisplayText ="Inconnue")]
+        [Display(Name = "Birth Date")] 
         public DateTime Birthdate { get; set; }
 
         [DataType(DataType.PhoneNumber)]
