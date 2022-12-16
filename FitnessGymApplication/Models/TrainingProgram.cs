@@ -17,15 +17,15 @@ namespace FitnessGymApplication.Models
         [Key]
         public int Id { get; set; }
 
-        //Training Program Intensity
-        [Required]
-        [Display(Name = "Intensity")]
-        public eIntensity Intensity { get; set; }
-
         //Training Program Name
         [Display(Name = "Training Program Name")]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        //Training Program Intensity
+        [Required]
+        [Display(Name = "Intensity")]
+        public eIntensity Intensity { get; set; }
 
         //Training Program Duration
         [Display(Name = "Duration (Minutes)")]
