@@ -15,7 +15,7 @@ namespace FitnessGymApplication.Models
          
         public string MaxParticipants { get; set; }
 
-        public string IdTrainingProgram { get; set; }
+        public int IdTrainingProgram { get; set; }
         public int IdCoach { get; set; }
         public int IdLocation { get; set; }
         public int IdFormula { get; set; }
