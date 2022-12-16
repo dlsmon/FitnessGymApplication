@@ -1,13 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitnessGymApplication.Models
 {
     public class Goal
     {        
+        public enum eFrequency
+        {
+            Choose,
+            One,
+            Two,
+            Tree,
+            Four,
+            Five,
+            Six,
+            Seven,
+        }
+        
 
         public int Id { get; set; }
         public int? Weight { get; set; }
-        public int? Frequency { get; set; }
+
+        // Fréquence de 0 à 7 fois par semaines
+        public eFrequency Frequency { get; set; }
+
+        [Display(Name = "Calories Burnt")]
         public int? CaloriesBurnt { get; set; }
         public int IdClient { get; set; }
 

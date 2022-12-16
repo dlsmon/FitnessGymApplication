@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace FitnessGymApplication.Models
@@ -17,8 +17,5 @@ namespace FitnessGymApplication.Models
             [ForeignKey("IdLocation")]
             public virtual Location? Location { get; set; }
 
-
-
-        
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FitnessGymApplication.Models
 {
@@ -19,3 +19,4 @@ namespace FitnessGymApplication.Models
         public virtual ICollection<MachineLocation>? MachineLocation { get; set; }
     }
 }
+

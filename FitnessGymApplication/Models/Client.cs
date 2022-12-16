@@ -12,6 +12,18 @@ namespace FitnessGymApplication.Models
             Other
         }
 
+        public enum eNewsletter
+        {
+            Yes,
+            No
+        }
+
+        public enum eFreetrial
+        {
+            Yes,
+            No
+        }
+
         public int Id { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -27,24 +39,28 @@ namespace FitnessGymApplication.Models
         public DateTime Birthdate { get; set; }
 
         [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone Number")]
         public int Phonenumber { get; set; }
 
         public string? Adresse { get; set; }
 
         [DataType(DataType.EmailAddress, ErrorMessage = "This Email is not valid.")]
         public string Email { get; set; }
+
+        [DataType(DataType.Password)] //Password field will be non readable
+        [MaxLength(15, ErrorMessage = "Password must be between 8 and 15 characters"), MinLength(8)]
         public string Password { get; set; }
         public string? Diseases { get; set; }
         public string? Hobbies { get; set; }
 
         //Newsletter is boolean : if the client want a newsletter (1); if not (0)
-        public int Newsletter { get; set; }
+        public eNewsletter Newsletter { get; set; }
 
         //FreeTrial is boolean : if the client want a FreeTrial (1); if not (0)
-        public int Freetrial { get; set; }
+        public eFreetrial Freetrial { get; set; }
 
-       
-        
+        public virtual Goal? Goal { get; set; }
+
 
     }
 }
