@@ -12,6 +12,7 @@ namespace FitnessGymApplication.Data
         public DBContext (DbContextOptions<DBContext> options)
             : base(options)
         {
+
         }
         public DbSet<FitnessGymApplication.Models.Exercise> Exercise { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.TrainingProgram> TrainingProgram { get; set; } = default!;

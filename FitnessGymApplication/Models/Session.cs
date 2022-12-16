@@ -6,6 +6,7 @@ namespace FitnessGymApplication.Models
 {
     public class Session
     {
+        [Key]
         public int Id { get; set; }
         
         public string Date { get; set; }
@@ -31,6 +32,9 @@ namespace FitnessGymApplication.Models
 
         [ForeignKey("IdFormula")]
         public virtual Formula? Formula { get; set; }
+
+
+        public virtual ICollection<Reservation>? Reservations { get; set; }
 
     }
 }
