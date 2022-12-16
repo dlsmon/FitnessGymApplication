@@ -1,0 +1,36 @@
+﻿@model FitnessGymApplication.Models.IndividualProgram
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>IndividualProgram</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdTrainingProgram" class="control-label"></label>
+                <select asp-for="IdTrainingProgram" class ="form-control" asp-items="ViewBag.IdTrainingProgram"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdExercise" class="control-label"></label>
+                <select asp-for="IdExercise" class ="form-control" asp-items="ViewBag.IdExercise"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

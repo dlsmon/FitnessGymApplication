@@ -11,7 +11,7 @@ namespace FitnessGymApplication.Models
         public string Date { get; set; }
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]
-        [Range(1, 100, ErrorMessage = "La valeur doit être comprise entre 1 et 30")] 
+         
         public string MaxParticipants { get; set; }
 
         public string IdTrainingProgram { get; set; }
