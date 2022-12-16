@@ -59,7 +59,7 @@ namespace FitnessGymApplication.Models
         //FreeTrial is boolean : if the client want a FreeTrial (1); if not (0)
         public eFreetrial Freetrial { get; set; }
 
-        public virtual Goal? Goal { get; set; }
+        
 
 
     }

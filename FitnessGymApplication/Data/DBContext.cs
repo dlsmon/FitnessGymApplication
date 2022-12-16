@@ -14,9 +14,14 @@ namespace FitnessGymApplication.Data
         {
 
         }
+
         public DbSet<FitnessGymApplication.Models.Exercise> Exercise { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.TrainingProgram> TrainingProgram { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.IndividualProgram> IndividualProgram { get; set; } = default!;
+
+        public DbSet<FitnessGymApplication.Models.Client> Client { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Goal> Goal { get; set; } = default!;
+
 
     }
 }
