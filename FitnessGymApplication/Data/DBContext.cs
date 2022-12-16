@@ -13,6 +13,8 @@ namespace FitnessGymApplication.Data
             : base(options)
         {
         }
+        public DbSet<FitnessGymApplication.Models.Client> Client { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Goal> Goal { get; set; } = default!;
 
     }
 }

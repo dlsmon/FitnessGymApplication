@@ -7,7 +7,7 @@ namespace FitnessGymApplication.Models
     {        
         public enum eFrequency
         {
-            Choose,
+            Zero,
             One,
             Two,
             Tree,
