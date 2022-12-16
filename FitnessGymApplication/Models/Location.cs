@@ -1,6 +1,4 @@
-﻿using FitnessGymApplication.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace FitnessGymApplication.Models
 {
@@ -8,12 +6,17 @@ namespace FitnessGymApplication.Models
     {
         [Key]
         public int ID { get; set; }
-        public  string Address { get; set; }
+        [Required]
+        [StringLength(160)]
+        public string Address { get; set; }
+        [Required]
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Postal Code")]
         public int PostalCode { get; set; }
-        //Maximum number of participants in  the gym 
+         
+        [Display(Name = "Participants")]
         public int MaxParticipants { get; set; }
-
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<MachineLocation>? MachineLocation { get; set; }
     }
 }
 
