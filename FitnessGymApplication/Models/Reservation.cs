@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitnessGymApplication.Models
 {
@@ -7,6 +8,7 @@ namespace FitnessGymApplication.Models
     //A Reservation can have many clients. Up to maxParticipants.
     public class Reservation
     {
+        [Key]
         public int Id { get; set; }
 
         //Maximum participants possible during a session reservation.
@@ -26,5 +28,6 @@ namespace FitnessGymApplication.Models
 
         [ForeignKey("IdClient")]
         public virtual Client? Client { get; set; }
+
     }
 }

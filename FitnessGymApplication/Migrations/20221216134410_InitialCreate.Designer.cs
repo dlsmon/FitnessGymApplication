@@ -4,6 +4,7 @@ using FitnessGymApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20221216134410_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +84,6 @@ namespace FitnessGymApplication.Migrations
 
                     b.ToTable("Client");
                 });
-
 
             modelBuilder.Entity("FitnessGymApplication.Models.Coach", b =>
                 {
@@ -181,7 +183,11 @@ namespace FitnessGymApplication.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-                    
+
+                    b.HasIndex("IdClient")
+                        .IsUnique();
+
+                    b.ToTable("Goal");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.IndividualProgram", b =>
@@ -364,13 +370,11 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("MachinesID");
 
                     b.ToTable("LocationMachine");
-
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Goal", b =>
                 {
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
-
                         .WithOne("Goal")
                         .HasForeignKey("FitnessGymApplication.Models.Goal", "IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -401,12 +405,11 @@ namespace FitnessGymApplication.Migrations
             modelBuilder.Entity("FitnessGymApplication.Models.Reservation", b =>
                 {
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
-                    
                         .WithMany()
                         .HasForeignKey("IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                        
+
                     b.HasOne("FitnessGymApplication.Models.Session", "Session")
                         .WithMany("Reservations")
                         .HasForeignKey("IdSession")
@@ -488,7 +491,6 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("IndividualPrograms");
 
                     b.Navigation("Sessions");
-
                 });
 #pragma warning restore 612, 618
         }

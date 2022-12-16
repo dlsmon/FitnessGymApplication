@@ -6,15 +6,16 @@ namespace FitnessGymApplication.Models
 {
     public class Session
     {
+        [Key]
         public int Id { get; set; }
         
         public string Date { get; set; }
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]
-        [Range(1, 100, ErrorMessage = "La valeur doit être comprise entre 1 et 30")] 
+         
         public string MaxParticipants { get; set; }
 
-        public string IdTrainingProgram { get; set; }
+        public int IdTrainingProgram { get; set; }
         public int IdCoach { get; set; }
         public int IdLocation { get; set; }
         public int IdFormula { get; set; }
@@ -31,6 +32,9 @@ namespace FitnessGymApplication.Models
 
         [ForeignKey("IdFormula")]
         public virtual Formula? Formula { get; set; }
+
+
+        public virtual ICollection<Reservation>? Reservations { get; set; }
 
     }
 }

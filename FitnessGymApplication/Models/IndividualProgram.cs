@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitnessGymApplication.Models
 {
     public class IndividualProgram
     {
+        [Key]
+        public int Id { get; set; }
+
         //Training program as a collective will have
         public int IdTrainingProgram { get; set; }
         public int IdExercise { get; set; }
