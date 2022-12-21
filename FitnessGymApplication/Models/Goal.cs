@@ -16,8 +16,8 @@ namespace FitnessGymApplication.Models
             Six,
             Seven,
         }
-        
 
+        [Key]
         public int Id { get; set; }
         public int? Weight { get; set; }
 
