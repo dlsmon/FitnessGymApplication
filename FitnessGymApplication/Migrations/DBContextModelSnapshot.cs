@@ -82,7 +82,6 @@ namespace FitnessGymApplication.Migrations
                     b.ToTable("Client");
                 });
 
-
             modelBuilder.Entity("FitnessGymApplication.Models.Coach", b =>
                 {
                     b.Property<int>("ID")
@@ -93,21 +92,24 @@ namespace FitnessGymApplication.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("IdSpeciality")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Photo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Speciality")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ID");
+
+                    b.HasIndex("IdSpeciality");
 
                     b.ToTable("Coach");
                 });
@@ -140,6 +142,98 @@ namespace FitnessGymApplication.Migrations
                     b.ToTable("Exercise");
                 });
 
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteCoach", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdClient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCoach")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdClient");
+
+                    b.HasIndex("IdCoach");
+
+                    b.ToTable("FavoriteCoach");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteExercise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdClient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdExercise")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdClient");
+
+                    b.HasIndex("IdExercise");
+
+                    b.ToTable("FavoriteExercise");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteLocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdClient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdLocation")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdClient");
+
+                    b.HasIndex("IdLocation");
+
+                    b.ToTable("FavoriteLocation");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteTrainingProgram", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdClient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTrainingProgram")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdClient");
+
+                    b.HasIndex("IdTrainingProgram");
+
+                    b.ToTable("FavoriteTrainingProgram");
+                });
+
             modelBuilder.Entity("FitnessGymApplication.Models.Formula", b =>
                 {
                     b.Property<int>("ID")
@@ -150,7 +244,8 @@ namespace FitnessGymApplication.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -181,7 +276,10 @@ namespace FitnessGymApplication.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-                    
+
+                    b.HasIndex("IdClient");
+
+                    b.ToTable("Goal");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.IndividualProgram", b =>
@@ -217,7 +315,8 @@ namespace FitnessGymApplication.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(160)
+                        .HasColumnType("nvarchar(160)");
 
                     b.Property<int>("MaxParticipants")
                         .HasColumnType("int");
@@ -238,17 +337,42 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Photo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Machine");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.MachineLocation", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("IdLocation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMachine")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IdLocation");
+
+                    b.HasIndex("IdMachine");
+
+                    b.ToTable("MachineLocation");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Reservation", b =>
@@ -321,6 +445,24 @@ namespace FitnessGymApplication.Migrations
                     b.ToTable("Session");
                 });
 
+            modelBuilder.Entity("FitnessGymApplication.Models.Speciality", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Speciality");
+                });
+
             modelBuilder.Entity("FitnessGymApplication.Models.TrainingProgram", b =>
                 {
                     b.Property<int>("Id")
@@ -351,28 +493,98 @@ namespace FitnessGymApplication.Migrations
                     b.ToTable("TrainingProgram");
                 });
 
-            modelBuilder.Entity("LocationMachine", b =>
+            modelBuilder.Entity("FitnessGymApplication.Models.Coach", b =>
                 {
-                    b.Property<int>("LocationsID")
-                        .HasColumnType("int");
+                    b.HasOne("FitnessGymApplication.Models.Speciality", "Speciality")
+                        .WithMany()
+                        .HasForeignKey("IdSpeciality")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("MachinesID")
-                        .HasColumnType("int");
+                    b.Navigation("Speciality");
+                });
 
-                    b.HasKey("LocationsID", "MachinesID");
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteCoach", b =>
+                {
+                    b.HasOne("FitnessGymApplication.Models.Client", "Client")
+                        .WithMany("FavoriteCoach")
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasIndex("MachinesID");
+                    b.HasOne("FitnessGymApplication.Models.Coach", "Coach")
+                        .WithMany()
+                        .HasForeignKey("IdCoach")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.ToTable("LocationMachine");
+                    b.Navigation("Client");
 
+                    b.Navigation("Coach");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteExercise", b =>
+                {
+                    b.HasOne("FitnessGymApplication.Models.Client", "Client")
+                        .WithMany("FavoriteExercice")
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitnessGymApplication.Models.Exercise", "Exercise")
+                        .WithMany()
+                        .HasForeignKey("IdExercise")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Exercise");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteLocation", b =>
+                {
+                    b.HasOne("FitnessGymApplication.Models.Client", "Client")
+                        .WithMany("FavoriteLocation")
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitnessGymApplication.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("IdLocation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.FavoriteTrainingProgram", b =>
+                {
+                    b.HasOne("FitnessGymApplication.Models.Client", "Client")
+                        .WithMany("TrainingProgram")
+                        .HasForeignKey("IdClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitnessGymApplication.Models.TrainingProgram", "TrainingProgram")
+                        .WithMany()
+                        .HasForeignKey("IdTrainingProgram")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("TrainingProgram");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Goal", b =>
                 {
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
-
-                        .WithOne("Goal")
-                        .HasForeignKey("FitnessGymApplication.Models.Goal", "IdClient")
+                        .WithMany("Goal")
+                        .HasForeignKey("IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -398,15 +610,33 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("TrainingProgram");
                 });
 
+            modelBuilder.Entity("FitnessGymApplication.Models.MachineLocation", b =>
+                {
+                    b.HasOne("FitnessGymApplication.Models.Location", "Location")
+                        .WithMany("MachineLocation")
+                        .HasForeignKey("IdLocation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitnessGymApplication.Models.Machine", "Machine")
+                        .WithMany("MachineLocations")
+                        .HasForeignKey("IdMachine")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Machine");
+                });
+
             modelBuilder.Entity("FitnessGymApplication.Models.Reservation", b =>
                 {
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
-                    
                         .WithMany()
                         .HasForeignKey("IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                        
+
                     b.HasOne("FitnessGymApplication.Models.Session", "Session")
                         .WithMany("Reservations")
                         .HasForeignKey("IdSession")
@@ -453,29 +683,32 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("TrainingProgram");
                 });
 
-            modelBuilder.Entity("LocationMachine", b =>
-                {
-                    b.HasOne("FitnessGymApplication.Models.Location", null)
-                        .WithMany()
-                        .HasForeignKey("LocationsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FitnessGymApplication.Models.Machine", null)
-                        .WithMany()
-                        .HasForeignKey("MachinesID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FitnessGymApplication.Models.Client", b =>
                 {
+                    b.Navigation("FavoriteCoach");
+
+                    b.Navigation("FavoriteExercice");
+
+                    b.Navigation("FavoriteLocation");
+
                     b.Navigation("Goal");
+
+                    b.Navigation("TrainingProgram");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Exercise", b =>
                 {
                     b.Navigation("IndividualPrograms");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.Location", b =>
+                {
+                    b.Navigation("MachineLocation");
+                });
+
+            modelBuilder.Entity("FitnessGymApplication.Models.Machine", b =>
+                {
+                    b.Navigation("MachineLocations");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Session", b =>
@@ -488,7 +721,6 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("IndividualPrograms");
 
                     b.Navigation("Sessions");
-
                 });
 #pragma warning restore 612, 618
         }
