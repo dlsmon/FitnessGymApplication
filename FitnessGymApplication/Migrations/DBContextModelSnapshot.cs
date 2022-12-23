@@ -140,6 +140,48 @@ namespace FitnessGymApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Exercise");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Calories = 50,
+                            Description = "Au sol sur le do, les genoux formant un angle un angle droit avec vos hanches. Ramenez votre buste vers le ciel tout en plaçant les mains au niveau de la nuque.",
+                            Duration = 5,
+                            Name = "Crunch"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Calories = 100,
+                            Description = "En position de planche frontale : sur la pointe des pieds, les mains bien à plat sur le sol, le dos droit et la tête dans le prolongement de votre colonne vertébrale. Ramenez ensuite les genoux à votre poitrine de façon alternée.",
+                            Duration = 5,
+                            Name = "Montain Climber"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Calories = 100,
+                            Description = "Debout, l'espace entre votre deux pieds correspond à la largeur de vos épaules. Sautez en poussant les genoux vers l'extérieur. Lever les bras en même temps que vous sautez. Puis revenir en position initiale : debout, les bras le long du corps.",
+                            Duration = 5,
+                            Name = "Jumping jack"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Calories = 100,
+                            Description = "En position de planche frontale, c'est-à-dire sur la pointe des pieds et mains à plat sur le sol, le dos droit et la tête dans le prolongement de votre colonne vertébrale. Ramenez la poitrine vers le sol en pliant les coudes puis tendez les bras. Restez bien gainé tout au long de l'exercice.",
+                            Duration = 5,
+                            Name = "Pompes Hiit"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Calories = 100,
+                            Description = "Commencez en position debout, puis lever rapidement les genoux un après l'autre.",
+                            Duration = 5,
+                            Name = "Leg lift"
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.FavoriteCoach", b =>
@@ -318,8 +360,16 @@ namespace FitnessGymApplication.Migrations
                         .HasMaxLength(160)
                         .HasColumnType("nvarchar(160)");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MaxParticipants")
                         .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
@@ -327,6 +377,98 @@ namespace FitnessGymApplication.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Location");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = "22 bis boulevard Saint Marcel",
+                            City = "Paris",
+                            MaxParticipants = 200,
+                            Name = "Fitness Gym Austerlitz",
+                            PostalCode = 75005
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Address = "4/6 Passage Louis Philippe",
+                            City = "Paris",
+                            MaxParticipants = 200,
+                            Name = "Fitness Gym Bastille",
+                            PostalCode = 75011
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Address = "123 Avenue de France ",
+                            City = "Paris",
+                            MaxParticipants = 150,
+                            Name = "Fitness Gym BNF",
+                            PostalCode = 75013
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Address = "21 rue de la banque",
+                            City = "Paris",
+                            MaxParticipants = 150,
+                            Name = "Fitness Gym Opera",
+                            PostalCode = 75002
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Address = "6 allée de la 2ème Division Blindée",
+                            City = "Paris",
+                            MaxParticipants = 150,
+                            Name = "Fitness Gym Montparnasse",
+                            PostalCode = 75014
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Address = "81 rue de Lagny ",
+                            City = "Paris",
+                            MaxParticipants = 250,
+                            Name = "Fitness Gym Nation",
+                            PostalCode = 75020
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Address = "44 rue de Clichy ",
+                            City = "Paris",
+                            MaxParticipants = 220,
+                            Name = "Fitness Gym Saint-Lazarre",
+                            PostalCode = 75009
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Address = "19, avenue de la Liberté",
+                            City = "Nanterre",
+                            MaxParticipants = 250,
+                            Name = "Fitness Gym La défense",
+                            PostalCode = 92000
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Address = "18-20, rue Auguste Perret",
+                            City = "Villejuif",
+                            MaxParticipants = 250,
+                            Name = "Fitness Gym Villejuif",
+                            PostalCode = 94800
+                        },
+                        new
+                        {
+                            ID = 10,
+                            Address = "11, Rue Exelmans",
+                            City = "Versailles",
+                            MaxParticipants = 350,
+                            Name = "Fitness Gym Versailles",
+                            PostalCode = 78000
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Machine", b =>
@@ -491,6 +633,98 @@ namespace FitnessGymApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TrainingProgram");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Calories = 750,
+                            Description = "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "Body Attack"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Calories = 500,
+                            Description = "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "Body Pump"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Calories = 500,
+                            Description = "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "Body Sculpt"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Calories = 300,
+                            Description = "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.",
+                            Duration = 30,
+                            Intensity = 0,
+                            Name = "Cuisses Abdos Fessiers"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Calories = 700,
+                            Description = "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.",
+                            Duration = 30,
+                            Intensity = 0,
+                            Name = "Hiit"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Calories = 550,
+                            Description = "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "Step"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Calories = 500,
+                            Description = "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.",
+                            Duration = 60,
+                            Intensity = 0,
+                            Name = "Stretching"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Calories = 600,
+                            Description = "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "RPM"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Calories = 400,
+                            Description = "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.",
+                            Duration = 60,
+                            Intensity = 0,
+                            Name = "Yoga"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Calories = 550,
+                            Description = "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.",
+                            Duration = 45,
+                            Intensity = 0,
+                            Name = "Zumba"
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Coach", b =>
