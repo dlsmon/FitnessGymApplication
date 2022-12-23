@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FitnessGymApplication.Models;
+using FitnessGymApplication.Data.Seeding;
 
 namespace FitnessGymApplication.Data
 {
@@ -13,6 +14,14 @@ namespace FitnessGymApplication.Data
             : base(options)
         {
 
+        }
+
+        //Seeding Database
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            AppDBContextSeed.Seed(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<FitnessGymApplication.Models.Exercise> Exercise { get; set; } = default!;
