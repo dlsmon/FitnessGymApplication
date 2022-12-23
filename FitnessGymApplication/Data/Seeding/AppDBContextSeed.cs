@@ -34,6 +34,40 @@ namespace FitnessGymApplication.Data.Seeding
             //Machine
 
             //Product
+
+
+
+            /*public static void Seed(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<DBContext>();
+             
+                context.Database.EnsureCreated();                            
+
+                //Exercice
+
+                if (!context.Exercise.Any())
+                {
+                    context.Exercise.AddRange(new List<Exercise>()
+                    {
+                         new Exercise()
+                        {
+                            Name = "Body Attack",                           
+                            Description = "Description"
+                        }
+                    }
+                    );
+                    context.SaveChanges();
+                }                            
+
+            }
+        }*/
+
+
+
+
+
         }
     }
 }
