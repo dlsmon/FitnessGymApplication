@@ -20,11 +20,26 @@ namespace FitnessGymApplication.Controllers
         }
 
         // GET: TrainingProgram
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.TrainingProgram != null ? 
-                          View(await _context.TrainingProgram.ToListAsync()) :
-                          Problem("Entity set 'DBContext.TrainingProgram'  is null.");
+            if (_context.TrainingProgram == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+            }
+
+            var trainingProgram = from m in _context.TrainingProgram
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                trainingProgram = trainingProgram.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await trainingProgram.ToListAsync());
+
+            //return _context.TrainingProgram != null ? 
+              //            View(await _context.TrainingProgram.ToListAsync()) :
+                //          Problem("Entity set 'DBContext.TrainingProgram'  is null.");
         }
 
         // GET: TrainingProgram/Details/5
