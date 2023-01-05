@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230105144311_TEST")]
+    [Migration("20230105163511_TEST")]
     partial class TEST
     {
         /// <inheritdoc />
@@ -107,7 +107,6 @@ namespace FitnessGymApplication.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Photo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -115,6 +114,79 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("IdSpeciality");
 
                     b.ToTable("Coach");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            FirstName = " Quentin",
+                            IdSpeciality = 0,
+                            LastName = "H.",
+                            Photo = "/Assets/Images/Quentin H.jfif"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            FirstName = "Léonce",
+                            IdSpeciality = 0,
+                            LastName = " L."
+                        },
+                        new
+                        {
+                            ID = 3,
+                            FirstName = " Guillaume",
+                            IdSpeciality = 0,
+                            LastName = " J."
+                        },
+                        new
+                        {
+                            ID = 4,
+                            FirstName = " Anthony",
+                            IdSpeciality = 0,
+                            LastName = " J."
+                        },
+                        new
+                        {
+                            ID = 5,
+                            FirstName = " Romain",
+                            IdSpeciality = 0,
+                            LastName = "G."
+                        },
+                        new
+                        {
+                            ID = 6,
+                            FirstName = "Lia",
+                            IdSpeciality = 0,
+                            LastName = "T."
+                        },
+                        new
+                        {
+                            ID = 7,
+                            FirstName = "Florian",
+                            IdSpeciality = 0,
+                            LastName = "H."
+                        },
+                        new
+                        {
+                            ID = 8,
+                            FirstName = "Mélodie",
+                            IdSpeciality = 0,
+                            LastName = "C."
+                        },
+                        new
+                        {
+                            ID = 9,
+                            FirstName = "Nabil",
+                            IdSpeciality = 0,
+                            LastName = "C."
+                        },
+                        new
+                        {
+                            ID = 10,
+                            FirstName = "Guillaume",
+                            IdSpeciality = 0,
+                            LastName = "P."
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Exercise", b =>

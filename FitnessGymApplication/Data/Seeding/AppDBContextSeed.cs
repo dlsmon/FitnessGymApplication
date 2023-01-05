@@ -1,5 +1,8 @@
-﻿using FitnessGymApplication.Models;
+﻿using Elfie.Serialization;
+using FitnessGymApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using NuGet.ContentModel;
 
 namespace FitnessGymApplication.Data.Seeding
 {
@@ -352,6 +355,115 @@ namespace FitnessGymApplication.Data.Seeding
 
 
             //Coach 
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 1,
+                    FirstName = " Quentin",
+                    LastName = "H.",
+                    Photo = "/Assets/Images/Quentin H.jfif",// C:/Users/FORMATION/source/repos/FitnessGymApp/Fitne/wwwroot/Assets/Images/Quentin H.jfif,
+                    //IdSpeciality = ,
+                    //Speciality = 
+                });
+            modelBuilder.Entity<Coach>().HasData(
+            new Coach()
+                {
+                    ID = 2,
+                    FirstName = "Léonce",
+                    LastName = " L.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 3,
+                    FirstName = " Guillaume",
+                    LastName = " J.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 4,
+                    FirstName = " Anthony",
+                    LastName = " J.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 5,
+                    FirstName = " Romain",
+                    LastName = "G.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 6,
+                    FirstName = "Lia",
+                    LastName = "T.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 7,
+                    FirstName = "Florian",
+                    LastName = "H.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 8,
+                    FirstName = "Mélodie",
+                    LastName = "C.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 9,
+                    FirstName = "Nabil",
+                    LastName = "C.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
+
+            modelBuilder.Entity<Coach>().HasData(
+                new Coach()
+                {
+                    ID = 10,
+                    FirstName = "Guillaume",
+                    LastName = "P.",
+                    //Photo = "",
+                    //IdSpeciality = " ",
+                    //Speciality =
+                });
 
 
             //Machine

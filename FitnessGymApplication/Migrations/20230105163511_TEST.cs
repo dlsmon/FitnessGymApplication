@@ -240,7 +240,7 @@ namespace FitnessGymApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdSpeciality = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -400,6 +400,23 @@ namespace FitnessGymApplication.Migrations
                         principalTable: "Session",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Coach",
+                columns: new[] { "ID", "FirstName", "IdSpeciality", "LastName", "Photo" },
+                values: new object[,]
+                {
+                    { 1, " Quentin", 0, "H.", "/Assets/Images/Quentin H.jfif" },
+                    { 2, "Léonce", 0, " L.", null },
+                    { 3, " Guillaume", 0, " J.", null },
+                    { 4, " Anthony", 0, " J.", null },
+                    { 5, " Romain", 0, "G.", null },
+                    { 6, "Lia", 0, "T.", null },
+                    { 7, "Florian", 0, "H.", null },
+                    { 8, "Mélodie", 0, "C.", null },
+                    { 9, "Nabil", 0, "C.", null },
+                    { 10, "Guillaume", 0, "P.", null }
                 });
 
             migrationBuilder.InsertData(

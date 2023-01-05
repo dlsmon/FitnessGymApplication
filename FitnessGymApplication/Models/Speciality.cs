@@ -9,9 +9,9 @@ namespace FitnessGymApplication.Models
         [Required]
         [MaxLength(10), MinLength(3)]
         public string Name { get; set; }
-        public override string ToString()
-        {
-            return $"{Name}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{Name}";
+        //}
     }
 }

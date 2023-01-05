@@ -14,10 +14,10 @@ namespace FitnessGymApplication.Models
         [Required]
         [MaxLength(10), MinLength(3)]
         public string LastName { get; set; }
+        //[Required(ErrorMessage = "Please choose file to upload.")]
         [DataType(DataType.Upload)]
         [Display(Name = "Upload File")]
-        [Required(ErrorMessage = "Please choose file to upload.")]
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
         [Display(Name = "Speciality")]
         public int IdSpeciality { get; set; }
         [ForeignKey("IdSpeciality")]
