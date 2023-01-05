@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20221223132841_TEST")]
+    [Migration("20230105144311_TEST")]
     partial class TEST
     {
         /// <inheritdoc />
@@ -287,6 +287,12 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("Commitement")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -298,6 +304,56 @@ namespace FitnessGymApplication.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Formula");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Commitement = 1,
+                            Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            Name = "Classique fit",
+                            Price = 29
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Commitement = 0,
+                            Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                            Name = "Classique fit",
+                            Price = 34
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Commitement = 1,
+                            Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            Name = "Premium fit",
+                            Price = 36
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Commitement = 0,
+                            Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                            Name = "Premium fit",
+                            Price = 40
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Commitement = 0,
+                            Description = "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
+                            Name = "No Gym No Problem",
+                            Price = 9
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Commitement = 0,
+                            Description = "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
+                            Name = "No Gym No Problem",
+                            Price = 29
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Goal", b =>

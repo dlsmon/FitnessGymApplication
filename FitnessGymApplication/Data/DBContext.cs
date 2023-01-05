@@ -31,6 +31,7 @@ namespace FitnessGymApplication.Data
         public DbSet<FitnessGymApplication.Models.Client> Client { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Goal> Goal { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Location> Location { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Formula> Formula { get; set; } = default!;
 
 
     }
