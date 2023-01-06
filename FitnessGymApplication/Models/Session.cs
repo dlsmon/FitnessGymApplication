@@ -14,6 +14,11 @@ namespace FitnessGymApplication.Models
         [Display(Name = "Entry date")]
         public DateTime Entrydate { get; set; }
 
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:HH:mm:ss}", NullDisplayText = "Inconnue")]
+        //[Display(Name = "Time")]
+        //public DateTime Time { get; set; }
+
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]
          

@@ -508,6 +508,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     Id = 1,
                     //Entrydate = 14/01/2023 10:40:40,
+                    //Time
                     MaxParticipants = "15",
                     IdTrainingProgram = 1,
                     IdCoach = 1,
@@ -520,6 +521,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     Id = 2,
                     //Entrydate = 15/01/2023,
+                    //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 2,
                     IdCoach = 5,
@@ -532,6 +534,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     Id = 3,
                     //Entrydate = 16/01/2023,
+                    //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 3,
                     IdCoach = 5,
@@ -544,6 +547,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     Id = 4,
                     //Entrydate = 14/01/2023,
+                    //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 4,
                     IdCoach = 3,
@@ -556,6 +560,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     Id = 5,
                     //Entrydate = 15/01/2023,
+                    //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 2,
                     IdCoach = 1,
@@ -564,8 +569,72 @@ namespace FitnessGymApplication.Data.Seeding
                 });
 
 
+            //Client
+
+            modelBuilder.Entity<Client>().HasData(
+                new Client()
+                {
+                    Id = 1,
+                    FirstName = "Rachel",
+                    LastName = "Wiliam",
+                    Sex = Client.eSex.Women,
+                    Height = 170,
+                    Weight = 75,
+                    //Birthdate = 28.01.1990,
+                    Phonenumber = 0620285591,
+                    Adresse = "Rue du Chateau, 95110 Paris",
+                    Email = "Rachel@gmail.com",
+                    Password = "rachel",
+                    Diseases = "None",
+                    Hobbies = "Danse, volley-ball",
+                    Newsletter = Client.eNewsletter.Yes,
+                    Freetrial = Client.eFreetrial.Yes,                  
+                });
+
+            modelBuilder.Entity<Client>().HasData(
+                new Client()
+                {
+                    Id = 1,
+                    FirstName = "Richy",
+                    LastName = "Wiliam",
+                    Sex = Client.eSex.Men,
+                    Height = 170,
+                    Weight = 85,
+                    //Birthdate = 28.01.1990,
+                    Phonenumber = 0633504482,
+                    Adresse = "Rue du Chateau, 95110 Paris",
+                    Email = "Richy@gmail.com",
+                    Password = "Richy",
+                    Diseases = "diabetes",
+                    Hobbies = "Sport",
+                    Newsletter = Client.eNewsletter.No,
+                    Freetrial = Client.eFreetrial.No,
+                });           
+
+
             //Subscription
 
+            modelBuilder.Entity<Subscription>().HasData(
+                new Subscription()
+                {
+                    Id = 1,
+                    //Entrydate = 01/01/2023,
+                    //Sortdate = 01/01/2024,
+                    IdClient = 1,                    
+                    IdFormula = 3
+                });
+
+            modelBuilder.Entity<Subscription>().HasData(
+                new Subscription()
+                {
+                    Id = 2,
+                    //Entrydate = 01/01/2023,
+                    //Sortdate = 01/01/2024,
+                    IdClient = 2,
+                    IdFormula = 3
+                });
+           
+           
 
             //Reservation
 
