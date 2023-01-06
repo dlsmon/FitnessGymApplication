@@ -574,7 +574,7 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<Client>().HasData(
                 new Client()
                 {
-                    Id = 1,
+                    ID = 1,
                     FirstName = "Rachel",
                     LastName = "Wiliam",
                     Sex = Client.eSex.Women,
@@ -594,7 +594,7 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<Client>().HasData(
                 new Client()
                 {
-                    Id = 1,
+                    ID = 2,
                     FirstName = "Richy",
                     LastName = "Wiliam",
                     Sex = Client.eSex.Men,
@@ -633,11 +633,12 @@ namespace FitnessGymApplication.Data.Seeding
                     IdClient = 2,
                     IdFormula = 3
                 });
-           
-           
+
+
 
             //Reservation
 
+            //Goal
 
 
             //Machine
@@ -687,6 +688,8 @@ namespace FitnessGymApplication.Data.Seeding
                     Description = "Idéale pour muscler les fessiers, cette machine vous laisse atteindre une extension maximale. Cela dit, aucun risque pour le bas de votre dos car la hanche n'effectue aucune rotation."
                 });
 
+
+            
 
             //Product
 

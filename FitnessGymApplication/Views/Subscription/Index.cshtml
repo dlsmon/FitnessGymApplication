@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FitnessGymApplication.Models.Goal>
+﻿@model IEnumerable<FitnessGymApplication.Models.Subscription>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Weight)
+                @Html.DisplayNameFor(model => model.Entrydate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Frequency)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CaloriesBurnt)
+                @Html.DisplayNameFor(model => model.Sortdate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formula)
             </th>
             <th></th>
         </tr>
@@ -31,16 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Weight)
+                @Html.DisplayFor(modelItem => item.Entrydate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Frequency)
+                @Html.DisplayFor(modelItem => item.Sortdate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CaloriesBurnt)
+                @Html.DisplayFor(modelItem => item.Client.ID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.Id)
+                @Html.DisplayFor(modelItem => item.Formula.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -10,90 +10,87 @@ using FitnessGymApplication.Models;
 
 namespace FitnessGymApplication.Controllers
 {
-    public class GoalController : Controller
+    public class ClientController : Controller
     {
         private readonly DBContext _context;
 
-        public GoalController(DBContext context)
+        public ClientController(DBContext context)
         {
             _context = context;
         }
 
-        // GET: Goal
+        // GET: Client
         public async Task<IActionResult> Index()
         {
-            var dBContext = _context.Goal.Include(g => g.Client);
-            return View(await dBContext.ToListAsync());
+              return _context.Client != null ? 
+                          View(await _context.Client.ToListAsync()) :
+                          Problem("Entity set 'DBContext.Client'  is null.");
         }
 
-        // GET: Goal/Details/5
+        // GET: Client/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Goal == null)
+            if (id == null || _context.Client == null)
             {
                 return NotFound();
             }
 
-            var goal = await _context.Goal
-                .Include(g => g.Client)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (goal == null)
+            var client = await _context.Client
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return View(goal);
+            return View(client);
         }
 
-        // GET: Goal/Create
+        // GET: Client/Create
         public IActionResult Create()
         {
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id");
             return View();
         }
 
-        // POST: Goal/Create
+        // POST: Client/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Weight,Frequency,CaloriesBurnt,IdClient")] Goal goal)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(goal);
+                _context.Add(client);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
-            return View(goal);
+            return View(client);
         }
 
-        // GET: Goal/Edit/5
+        // GET: Client/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Goal == null)
+            if (id == null || _context.Client == null)
             {
                 return NotFound();
             }
 
-            var goal = await _context.Goal.FindAsync(id);
-            if (goal == null)
+            var client = await _context.Client.FindAsync(id);
+            if (client == null)
             {
                 return NotFound();
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
-            return View(goal);
+            return View(client);
         }
 
-        // POST: Goal/Edit/5
+        // POST: Client/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Weight,Frequency,CaloriesBurnt,IdClient")] Goal goal)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
         {
-            if (id != goal.Id)
+            if (id != client.ID)
             {
                 return NotFound();
             }
@@ -102,12 +99,12 @@ namespace FitnessGymApplication.Controllers
             {
                 try
                 {
-                    _context.Update(goal);
+                    _context.Update(client);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GoalExists(goal.Id))
+                    if (!ClientExists(client.ID))
                     {
                         return NotFound();
                     }
@@ -118,51 +115,49 @@ namespace FitnessGymApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
-            return View(goal);
+            return View(client);
         }
 
-        // GET: Goal/Delete/5
+        // GET: Client/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Goal == null)
+            if (id == null || _context.Client == null)
             {
                 return NotFound();
             }
 
-            var goal = await _context.Goal
-                .Include(g => g.Client)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (goal == null)
+            var client = await _context.Client
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return View(goal);
+            return View(client);
         }
 
-        // POST: Goal/Delete/5
+        // POST: Client/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Goal == null)
+            if (_context.Client == null)
             {
-                return Problem("Entity set 'DBContext.Goal'  is null.");
+                return Problem("Entity set 'DBContext.Client'  is null.");
             }
-            var goal = await _context.Goal.FindAsync(id);
-            if (goal != null)
+            var client = await _context.Client.FindAsync(id);
+            if (client != null)
             {
-                _context.Goal.Remove(goal);
+                _context.Client.Remove(client);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GoalExists(int id)
+        private bool ClientExists(int id)
         {
-          return (_context.Goal?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Client?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
