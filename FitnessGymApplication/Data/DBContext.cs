@@ -35,6 +35,7 @@ namespace FitnessGymApplication.Data
         public DbSet<FitnessGymApplication.Models.Coach> Coach { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Speciality> Speciality { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Machine> Machine { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Session> Session { get; set; } = default!;
 
 
     }

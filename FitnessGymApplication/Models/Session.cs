@@ -10,7 +10,7 @@ namespace FitnessGymApplication.Models
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy H:mm:ss}", NullDisplayText = "Inconnue")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}", NullDisplayText = "Inconnue")]
         [Display(Name = "Entry date")]
         public DateTime Entrydate { get; set; }
 

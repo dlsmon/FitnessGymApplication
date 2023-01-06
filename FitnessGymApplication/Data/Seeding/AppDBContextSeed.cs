@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using NuGet.ContentModel;
+using Location = FitnessGymApplication.Models.Location;
 
 namespace FitnessGymApplication.Data.Seeding
 {
@@ -183,7 +184,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 1,
-                    Name = "Classique fit",
+                    Name = "Classique fit 1",
                     Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
                     Price = 29,                 
                     Commitement = Formula.eCommitement.Yes
@@ -193,7 +194,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 2,
-                    Name = "Classique fit",
+                    Name = "Classique fit 2",
                     Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
                     Price = 34,
                     Commitement = Formula.eCommitement.None
@@ -203,7 +204,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 3,
-                    Name = "Premium fit",
+                    Name = "Premium fit 1",
                     Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
                     Price = 36,
                     Commitement = Formula.eCommitement.Yes
@@ -213,7 +214,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 4,
-                    Name = "Premium fit",
+                    Name = "Premium fit 2",
                     Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
                     Price = 40,
                     Commitement = Formula.eCommitement.None
@@ -223,7 +224,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 5,
-                    Name = "No Gym No Problem",
+                    Name = "No Gym No Problem Month",
                     Description = "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
                     Price = 9,
                     Commitement = Formula.eCommitement.None
@@ -233,7 +234,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 6,
-                    Name = "No Gym No Problem",
+                    Name = "No Gym No Problem Year",
                     Description = "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
                     Price = 29,
                     Commitement = Formula.eCommitement.None
@@ -353,6 +354,8 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 350
                 });
 
+
+
             //Speciality (Specilization)
 
             modelBuilder.Entity<Speciality>().HasData(
@@ -379,6 +382,8 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 4,
                     Name = "Cardio"
                 });
+
+
             //Coach 
 
             modelBuilder.Entity<Coach>().HasData(
@@ -502,7 +507,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 1,
-                    //Entrydate = 14/01/2023,
+                    //Entrydate = 14/01/2023 10:40:40,
                     MaxParticipants = "15",
                     IdTrainingProgram = 1,
                     IdCoach = 1,

@@ -352,7 +352,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 1,
                             Commitement = 1,
                             Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                            Name = "Classique fit",
+                            Name = "Classique fit 1",
                             Price = 29
                         },
                         new
@@ -360,7 +360,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 2,
                             Commitement = 0,
                             Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                            Name = "Classique fit",
+                            Name = "Classique fit 2",
                             Price = 34
                         },
                         new
@@ -368,7 +368,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 3,
                             Commitement = 1,
                             Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                            Name = "Premium fit",
+                            Name = "Premium fit 1",
                             Price = 36
                         },
                         new
@@ -376,7 +376,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 4,
                             Commitement = 0,
                             Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                            Name = "Premium fit",
+                            Name = "Premium fit 2",
                             Price = 40
                         },
                         new
@@ -384,7 +384,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 5,
                             Commitement = 0,
                             Description = "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
-                            Name = "No Gym No Problem",
+                            Name = "No Gym No Problem Month",
                             Price = 9
                         },
                         new
@@ -392,7 +392,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 6,
                             Commitement = 0,
                             Description = "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
-                            Name = "No Gym No Problem",
+                            Name = "No Gym No Problem Year",
                             Price = 29
                         });
                 });
@@ -719,9 +719,8 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Entrydate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdCoach")
                         .HasColumnType("int");
@@ -750,6 +749,58 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("IdTrainingProgram");
 
                     b.ToTable("Session");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdCoach = 1,
+                            IdFormula = 3,
+                            IdLocation = 2,
+                            IdTrainingProgram = 1,
+                            MaxParticipants = "15"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdCoach = 5,
+                            IdFormula = 3,
+                            IdLocation = 7,
+                            IdTrainingProgram = 2,
+                            MaxParticipants = "15"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdCoach = 5,
+                            IdFormula = 4,
+                            IdLocation = 9,
+                            IdTrainingProgram = 3,
+                            MaxParticipants = "15"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdCoach = 3,
+                            IdFormula = 4,
+                            IdLocation = 8,
+                            IdTrainingProgram = 4,
+                            MaxParticipants = "15"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdCoach = 1,
+                            IdFormula = 3,
+                            IdLocation = 3,
+                            IdTrainingProgram = 2,
+                            MaxParticipants = "15"
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Speciality", b =>
