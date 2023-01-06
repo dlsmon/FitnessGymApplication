@@ -15,10 +15,12 @@ namespace FitnessGymApplication.Data.Seeding
         public static void Seed(ModelBuilder modelBuilder)
         {
 
-            //Exercise 
-                
+            //Remarque : le Id n'est pas affiché dans la vue
 
-                //Perte de poids : cardio
+            //Exercise 
+
+
+                    //Perte de poids : cardio
 
             modelBuilder.Entity<Exercise>().HasData(
                 new Exercise()
@@ -382,7 +384,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 4,
                     Name = "Cardio"
                 });
-
+            
 
             //Coach 
 
