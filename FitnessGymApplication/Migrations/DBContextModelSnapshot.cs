@@ -95,7 +95,7 @@ namespace FitnessGymApplication.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("IdSpeciality")
+                    b.Property<int?>("IdSpeciality")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
@@ -117,7 +117,7 @@ namespace FitnessGymApplication.Migrations
                         {
                             ID = 1,
                             FirstName = " Quentin",
-                            IdSpeciality = 0,
+                            IdSpeciality = 1,
                             LastName = "H.",
                             Photo = "/Assets/Images/Quentin H.jfif"
                         },
@@ -125,64 +125,36 @@ namespace FitnessGymApplication.Migrations
                         {
                             ID = 2,
                             FirstName = "Léonce",
-                            IdSpeciality = 0,
+                            IdSpeciality = 2,
                             LastName = " L."
                         },
                         new
                         {
                             ID = 3,
                             FirstName = " Guillaume",
-                            IdSpeciality = 0,
+                            IdSpeciality = 3,
                             LastName = " J."
                         },
                         new
                         {
                             ID = 4,
                             FirstName = " Anthony",
-                            IdSpeciality = 0,
+                            IdSpeciality = 1,
                             LastName = " J."
                         },
                         new
                         {
                             ID = 5,
                             FirstName = " Romain",
-                            IdSpeciality = 0,
+                            IdSpeciality = 1,
                             LastName = "G."
                         },
                         new
                         {
                             ID = 6,
                             FirstName = "Lia",
-                            IdSpeciality = 0,
+                            IdSpeciality = 4,
                             LastName = "T."
-                        },
-                        new
-                        {
-                            ID = 7,
-                            FirstName = "Florian",
-                            IdSpeciality = 0,
-                            LastName = "H."
-                        },
-                        new
-                        {
-                            ID = 8,
-                            FirstName = "Mélodie",
-                            IdSpeciality = 0,
-                            LastName = "C."
-                        },
-                        new
-                        {
-                            ID = 9,
-                            FirstName = "Nabil",
-                            IdSpeciality = 0,
-                            LastName = "C."
-                        },
-                        new
-                        {
-                            ID = 10,
-                            FirstName = "Guillaume",
-                            IdSpeciality = 0,
-                            LastName = "P."
                         });
                 });
 
@@ -473,6 +445,38 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("IdTrainingProgram");
 
                     b.ToTable("IndividualProgram");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IdExercise = 2,
+                            IdTrainingProgram = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IdExercise = 4,
+                            IdTrainingProgram = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IdExercise = 1,
+                            IdTrainingProgram = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IdExercise = 5,
+                            IdTrainingProgram = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IdExercise = 3,
+                            IdTrainingProgram = 5
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Location", b =>
@@ -608,18 +612,51 @@ namespace FitnessGymApplication.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Machine");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Description = "Améliorez votre endurance avec ce tapis de course qui absorbe le choc des impacts par rapport à la course en extérieur. Marcher, trottiner, courir, sprinter : vous pourrez choisir votre allure en fonction de votre forme ou de votre entraînement. Vous pouvez également augmenter la pente pour intensifier le travail.",
+                            Name = "Tapis de course"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Description = "Le vélo elliptique, cet incontournable des salles de sport, associe travail cardiovasculaire doux et travail musculaire sans impacts ni douleurs pour les articulations. La particularité de ce vélo ? Ses bras sont mobiles, ce qui vous permettra de solliciter 90% des muscles du corps en reproduisant les mouvements du ski de fond.",
+                            Name = "Vélo elliptique"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Description = "Ce vélo d’intérieur particulièrement ergonomique vous permet de réaliser des entraînements intenses, de développer vos capacités-cardio-vasculaires et de renforcer vos cuisses. Il possède toutes les fonctions d’un vélo de course : selle ajustable et fine permettant le pédalage en danseuse, guidon anatomique, pédales automatiques, système de freinage et cadre robuste.",
+                            Name = "Vélo semi-allongé"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Description = "Contrairement à ce que l'on pense, le rameur ne permet pas uniquement de travailler le haut du corps. Les jambes sont aussi très sollicitées et plus vous maîtrisez la technique, plus vous le ressentez ! Bras, épaules, jambes, abdominaux, lombaires… : en réalité, tous les muscles du corps sont mobilisés et renforcés, faisant du rameur un appareil très complet.",
+                            Name = "Rameur"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Description = "Idéale pour muscler les fessiers, cette machine vous laisse atteindre une extension maximale. Cela dit, aucun risque pour le bas de votre dos car la hanche n'effectue aucune rotation.",
+                            Name = "Glute Drive"
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.MachineLocation", b =>
@@ -725,12 +762,34 @@ namespace FitnessGymApplication.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Speciality");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Yoga Expert"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Bodybuilder"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Hiit Expert"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Cardio"
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.TrainingProgram", b =>
@@ -859,9 +918,7 @@ namespace FitnessGymApplication.Migrations
                 {
                     b.HasOne("FitnessGymApplication.Models.Speciality", "Speciality")
                         .WithMany()
-                        .HasForeignKey("IdSpeciality")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdSpeciality");
 
                     b.Navigation("Speciality");
                 });

@@ -1,5 +1,6 @@
 ﻿using Elfie.Serialization;
 using FitnessGymApplication.Models;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using NuGet.ContentModel;
@@ -352,8 +353,32 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 350
                 });
 
+            //Speciality (Specilization)
 
-
+            modelBuilder.Entity<Speciality>().HasData(
+                new Speciality()
+                {
+                    Id= 1,
+                    Name = "Yoga Expert"
+                });
+            modelBuilder.Entity<Speciality>().HasData(
+                new Speciality()
+                {
+                    Id = 2,
+                    Name = "Bodybuilder"
+                });
+            modelBuilder.Entity<Speciality>().HasData(
+                new Speciality()
+                {
+                    Id = 3,
+                    Name = "Hiit Expert"
+                });
+            modelBuilder.Entity<Speciality>().HasData(
+                new Speciality()
+                {
+                    Id = 4,
+                    Name = "Cardio"
+                });
             //Coach 
 
             modelBuilder.Entity<Coach>().HasData(
@@ -362,9 +387,9 @@ namespace FitnessGymApplication.Data.Seeding
                     ID = 1,
                     FirstName = " Quentin",
                     LastName = "H.",
-                    Photo = "/Assets/Images/Quentin H.jfif",// C:/Users/FORMATION/source/repos/FitnessGymApp/Fitne/wwwroot/Assets/Images/Quentin H.jfif,
-                    //IdSpeciality = ,
-                    //Speciality = 
+                    Photo = "/Assets/Images/Quentin H.jfif",                   
+                    IdSpeciality = 1,
+                    
                 });
             modelBuilder.Entity<Coach>().HasData(
             new Coach()
@@ -373,8 +398,8 @@ namespace FitnessGymApplication.Data.Seeding
                     FirstName = "Léonce",
                     LastName = " L.",
                     //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    IdSpeciality = 2,
+                    
                 });
 
             modelBuilder.Entity<Coach>().HasData(
@@ -384,8 +409,8 @@ namespace FitnessGymApplication.Data.Seeding
                     FirstName = " Guillaume",
                     LastName = " J.",
                     //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    IdSpeciality = 3,
+                    
                 });
 
             modelBuilder.Entity<Coach>().HasData(
@@ -395,8 +420,8 @@ namespace FitnessGymApplication.Data.Seeding
                     FirstName = " Anthony",
                     LastName = " J.",
                     //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    IdSpeciality = 1,
+                    
                 });
 
             modelBuilder.Entity<Coach>().HasData(
@@ -406,8 +431,8 @@ namespace FitnessGymApplication.Data.Seeding
                     FirstName = " Romain",
                     LastName = "G.",
                     //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    IdSpeciality = 1,
+                    
                 });
 
             modelBuilder.Entity<Coach>().HasData(
@@ -417,74 +442,181 @@ namespace FitnessGymApplication.Data.Seeding
                     FirstName = "Lia",
                     LastName = "T.",
                     //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    IdSpeciality = 4,
+                    
                 });
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
+
+
+            //Individual Program
+
+            modelBuilder.Entity<IndividualProgram>().HasData(
+                new IndividualProgram()
                 {
-                    ID = 7,
-                    FirstName = "Florian",
-                    LastName = "H.",
-                    //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    Id = 1,
+                    IdTrainingProgram = 1,
+                    IdExercise = 2,               
+
                 });
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
+            modelBuilder.Entity<IndividualProgram>().HasData(
+                new IndividualProgram()
                 {
-                    ID = 8,
-                    FirstName = "Mélodie",
-                    LastName = "C.",
-                    //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    Id = 2,
+                    IdTrainingProgram = 2,
+                    IdExercise = 4,
+
                 });
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
+            modelBuilder.Entity<IndividualProgram>().HasData(
+                new IndividualProgram()
                 {
-                    ID = 9,
-                    FirstName = "Nabil",
-                    LastName = "C.",
-                    //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    Id = 3,
+                    IdTrainingProgram = 3,
+                    IdExercise = 1,
+
                 });
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
+            modelBuilder.Entity<IndividualProgram>().HasData(
+                new IndividualProgram()
                 {
-                    ID = 10,
-                    FirstName = "Guillaume",
-                    LastName = "P.",
-                    //Photo = "",
-                    //IdSpeciality = " ",
-                    //Speciality =
+                    Id = 4,
+                    IdTrainingProgram = 4,
+                    IdExercise = 5,
+
+                });
+
+            modelBuilder.Entity<IndividualProgram>().HasData(
+                new IndividualProgram()
+                {
+                    Id = 5,
+                    IdTrainingProgram = 5,
+                    IdExercise = 3,
+
                 });
 
 
-            //Machine
+            //Session
 
+            modelBuilder.Entity<Session>().HasData(
+                new Session()
+                {
+                    Id = 1,
+                    //Entrydate = 14/01/2023,
+                    MaxParticipants = "15",
+                    IdTrainingProgram = 1,
+                    IdCoach = 1,
+                    IdLocation = 2,
+                    IdFormula = 3 
+                });
 
-            //Product
+            modelBuilder.Entity<Session>().HasData(
+                new Session()
+                {
+                    Id = 2,
+                    //Entrydate = 15/01/2023,
+                    MaxParticipants = "15",
+                    IdTrainingProgram = 2,
+                    IdCoach = 5,
+                    IdLocation = 7,
+                    IdFormula = 3
+                });
+
+            modelBuilder.Entity<Session>().HasData(
+                new Session()
+                {
+                    Id = 3,
+                    //Entrydate = 16/01/2023,
+                    MaxParticipants = "15",
+                    IdTrainingProgram = 3,
+                    IdCoach = 5,
+                    IdLocation = 9,
+                    IdFormula = 4
+                });
+
+            modelBuilder.Entity<Session>().HasData(
+                new Session()
+                {
+                    Id = 4,
+                    //Entrydate = 14/01/2023,
+                    MaxParticipants = "15",
+                    IdTrainingProgram = 4,
+                    IdCoach = 3,
+                    IdLocation = 8,
+                    IdFormula = 4
+                });
+
+            modelBuilder.Entity<Session>().HasData(
+                new Session()
+                {
+                    Id = 5,
+                    //Entrydate = 15/01/2023,
+                    MaxParticipants = "15",
+                    IdTrainingProgram = 2,
+                    IdCoach = 1,
+                    IdLocation = 3,
+                    IdFormula = 3
+                });
 
 
             //Subscription
 
 
-            //Individual Program
-
-
-            //Speciality (Specilization)
-
-
-            //Session
-
             //Reservation
 
+
+
+            //Machine
+
+            modelBuilder.Entity<Machine>().HasData(
+                new Machine()
+                {
+                    ID = 1,
+                    Name = "Tapis de course",
+                    //Photo = 
+                    Description = "Améliorez votre endurance avec ce tapis de course qui absorbe le choc des impacts par rapport à la course en extérieur. Marcher, trottiner, courir, sprinter : vous pourrez choisir votre allure en fonction de votre forme ou de votre entraînement. Vous pouvez également augmenter la pente pour intensifier le travail."
+                });
+
+            modelBuilder.Entity<Machine>().HasData(
+                new Machine()
+                {
+                    ID = 2,
+                    Name = "Vélo elliptique",
+                    //Photo = 
+                    Description = "Le vélo elliptique, cet incontournable des salles de sport, associe travail cardiovasculaire doux et travail musculaire sans impacts ni douleurs pour les articulations. La particularité de ce vélo ? Ses bras sont mobiles, ce qui vous permettra de solliciter 90% des muscles du corps en reproduisant les mouvements du ski de fond."
+                });
+
+            modelBuilder.Entity<Machine>().HasData(
+                new Machine()
+                {
+                    ID = 3,
+                    Name = "Vélo semi-allongé",
+                    //Photo = 
+                    Description = "Ce vélo d’intérieur particulièrement ergonomique vous permet de réaliser des entraînements intenses, de développer vos capacités-cardio-vasculaires et de renforcer vos cuisses. Il possède toutes les fonctions d’un vélo de course : selle ajustable et fine permettant le pédalage en danseuse, guidon anatomique, pédales automatiques, système de freinage et cadre robuste."
+                });
+
+            modelBuilder.Entity<Machine>().HasData(
+                new Machine()
+                {
+                    ID = 4,
+                    Name = "Rameur",
+                    //Photo = 
+                    Description = "Contrairement à ce que l'on pense, le rameur ne permet pas uniquement de travailler le haut du corps. Les jambes sont aussi très sollicitées et plus vous maîtrisez la technique, plus vous le ressentez ! Bras, épaules, jambes, abdominaux, lombaires… : en réalité, tous les muscles du corps sont mobilisés et renforcés, faisant du rameur un appareil très complet."
+                });
+
+            modelBuilder.Entity<Machine>().HasData(
+                new Machine()
+                {
+                    ID = 5,
+                    Name = "Glute Drive",
+                    //Photo = 
+                    Description = "Idéale pour muscler les fessiers, cette machine vous laisse atteindre une extension maximale. Cela dit, aucun risque pour le bas de votre dos car la hanche n'effectue aucune rotation."
+                });
+
+
+            //Product
+
+            
 
 
 

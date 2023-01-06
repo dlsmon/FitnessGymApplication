@@ -7,7 +7,7 @@ namespace FitnessGymApplication.Models
     {
         public int Id { get; set; }
         [Required]
-        [MaxLength(10), MinLength(3)]
+        [MaxLength(50)]
         public string Name { get; set; }
         //public override string ToString()
         //{

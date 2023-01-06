@@ -95,7 +95,8 @@ namespace FitnessGymApplication.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,7 +109,7 @@ namespace FitnessGymApplication.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,7 +242,7 @@ namespace FitnessGymApplication.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdSpeciality = table.Column<int>(type: "int", nullable: false)
+                    IdSpeciality = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -250,8 +251,7 @@ namespace FitnessGymApplication.Migrations
                         name: "FK_Coach_Speciality_IdSpeciality",
                         column: x => x.IdSpeciality,
                         principalTable: "Speciality",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -403,23 +403,6 @@ namespace FitnessGymApplication.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Coach",
-                columns: new[] { "ID", "FirstName", "IdSpeciality", "LastName", "Photo" },
-                values: new object[,]
-                {
-                    { 1, " Quentin", 0, "H.", "/Assets/Images/Quentin H.jfif" },
-                    { 2, "Léonce", 0, " L.", null },
-                    { 3, " Guillaume", 0, " J.", null },
-                    { 4, " Anthony", 0, " J.", null },
-                    { 5, " Romain", 0, "G.", null },
-                    { 6, "Lia", 0, "T.", null },
-                    { 7, "Florian", 0, "H.", null },
-                    { 8, "Mélodie", 0, "C.", null },
-                    { 9, "Nabil", 0, "C.", null },
-                    { 10, "Guillaume", 0, "P.", null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Exercise",
                 columns: new[] { "Id", "Calories", "Description", "Duration", "Name" },
                 values: new object[,]
@@ -462,6 +445,29 @@ namespace FitnessGymApplication.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Machine",
+                columns: new[] { "ID", "Description", "Name", "Photo" },
+                values: new object[,]
+                {
+                    { 1, "Améliorez votre endurance avec ce tapis de course qui absorbe le choc des impacts par rapport à la course en extérieur. Marcher, trottiner, courir, sprinter : vous pourrez choisir votre allure en fonction de votre forme ou de votre entraînement. Vous pouvez également augmenter la pente pour intensifier le travail.", "Tapis de course", null },
+                    { 2, "Le vélo elliptique, cet incontournable des salles de sport, associe travail cardiovasculaire doux et travail musculaire sans impacts ni douleurs pour les articulations. La particularité de ce vélo ? Ses bras sont mobiles, ce qui vous permettra de solliciter 90% des muscles du corps en reproduisant les mouvements du ski de fond.", "Vélo elliptique", null },
+                    { 3, "Ce vélo d’intérieur particulièrement ergonomique vous permet de réaliser des entraînements intenses, de développer vos capacités-cardio-vasculaires et de renforcer vos cuisses. Il possède toutes les fonctions d’un vélo de course : selle ajustable et fine permettant le pédalage en danseuse, guidon anatomique, pédales automatiques, système de freinage et cadre robuste.", "Vélo semi-allongé", null },
+                    { 4, "Contrairement à ce que l'on pense, le rameur ne permet pas uniquement de travailler le haut du corps. Les jambes sont aussi très sollicitées et plus vous maîtrisez la technique, plus vous le ressentez ! Bras, épaules, jambes, abdominaux, lombaires… : en réalité, tous les muscles du corps sont mobilisés et renforcés, faisant du rameur un appareil très complet.", "Rameur", null },
+                    { 5, "Idéale pour muscler les fessiers, cette machine vous laisse atteindre une extension maximale. Cela dit, aucun risque pour le bas de votre dos car la hanche n'effectue aucune rotation.", "Glute Drive", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Speciality",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Yoga Expert" },
+                    { 2, "Bodybuilder" },
+                    { 3, "Hiit Expert" },
+                    { 4, "Cardio" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "TrainingProgram",
                 columns: new[] { "Id", "Calories", "Description", "Duration", "Intensity", "Name" },
                 values: new object[,]
@@ -476,6 +482,31 @@ namespace FitnessGymApplication.Migrations
                     { 8, 600, "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.", 45, 0, "RPM" },
                     { 9, 400, "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.", 60, 0, "Yoga" },
                     { 10, 550, "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.", 45, 0, "Zumba" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Coach",
+                columns: new[] { "ID", "FirstName", "IdSpeciality", "LastName", "Photo" },
+                values: new object[,]
+                {
+                    { 1, " Quentin", 1, "H.", "/Assets/Images/Quentin H.jfif" },
+                    { 2, "Léonce", 2, " L.", null },
+                    { 3, " Guillaume", 3, " J.", null },
+                    { 4, " Anthony", 1, " J.", null },
+                    { 5, " Romain", 1, "G.", null },
+                    { 6, "Lia", 4, "T.", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "IndividualProgram",
+                columns: new[] { "Id", "IdExercise", "IdTrainingProgram" },
+                values: new object[,]
+                {
+                    { 1, 2, 1 },
+                    { 2, 4, 2 },
+                    { 3, 1, 3 },
+                    { 4, 5, 4 },
+                    { 5, 3, 5 }
                 });
 
             migrationBuilder.CreateIndex(

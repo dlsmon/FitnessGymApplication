@@ -19,7 +19,8 @@ namespace FitnessGymApplication.Models
         [Display(Name = "Upload File")]
         public string? Photo { get; set; }
         [Display(Name = "Speciality")]
-        public int IdSpeciality { get; set; }
+        public int? IdSpeciality { get; set; }
+       
         [ForeignKey("IdSpeciality")]
         public virtual Speciality? Speciality { get; set; }
 

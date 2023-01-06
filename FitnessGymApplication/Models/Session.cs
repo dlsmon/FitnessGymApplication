@@ -8,8 +8,12 @@ namespace FitnessGymApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        
-        public string Date { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy H:mm:ss}", NullDisplayText = "Inconnue")]
+        [Display(Name = "Entry date")]
+        public DateTime Entrydate { get; set; }
+
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]
          
