@@ -204,6 +204,8 @@ namespace FitnessGymApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Entrydate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Sortdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Price = table.Column<int>(type: "int", nullable: true),
+                    Discount = table.Column<int>(type: "int", nullable: true),
                     IdClient = table.Column<int>(type: "int", nullable: false),
                     IdFormula = table.Column<int>(type: "int", nullable: false)
                 },
@@ -383,7 +385,7 @@ namespace FitnessGymApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SessionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SessionHour = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MaxParticipants = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaxParticipants = table.Column<int>(type: "int", nullable: false),
                     IdTrainingProgram = table.Column<int>(type: "int", nullable: false),
                     IdCoach = table.Column<int>(type: "int", nullable: false),
                     IdLocation = table.Column<int>(type: "int", nullable: false),
@@ -424,7 +426,6 @@ namespace FitnessGymApplication.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MaxParticipants = table.Column<int>(type: "int", nullable: false),
                     Cancelled = table.Column<int>(type: "int", nullable: false),
                     IdSession = table.Column<int>(type: "int", nullable: false),
                     IdClient = table.Column<int>(type: "int", nullable: false)
@@ -577,11 +578,11 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Subscription",
-                columns: new[] { "Id", "Entrydate", "IdClient", "IdFormula", "Sortdate" },
+                columns: new[] { "Id", "Discount", "Entrydate", "IdClient", "IdFormula", "Price", "Sortdate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 4, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -589,17 +590,23 @@ namespace FitnessGymApplication.Migrations
                 columns: new[] { "Id", "IdCoach", "IdFormula", "IdLocation", "IdTrainingProgram", "MaxParticipants", "SessionDate", "SessionHour" },
                 values: new object[,]
                 {
-                    { 1, 1, 3, 2, 1, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 5, 3, 7, 2, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 5, 4, 9, 3, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 3, 4, 8, 4, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 1, 3, 3, 2, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 1, 3, 2, 1, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 5, 3, 7, 2, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 5, 4, 9, 3, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, 3, 4, 8, 4, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, 1, 3, 3, 2, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Reservation",
-                columns: new[] { "Id", "Cancelled", "IdClient", "IdSession", "MaxParticipants" },
-                values: new object[] { 1, 0, 2, 1, 15 });
+                columns: new[] { "Id", "Cancelled", "IdClient", "IdSession" },
+                values: new object[,]
+                {
+                    { 1, 0, 1, 1 },
+                    { 2, 0, 1, 1 },
+                    { 3, 0, 2, 1 },
+                    { 4, 1, 2, 1 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Coach_IdSpeciality",

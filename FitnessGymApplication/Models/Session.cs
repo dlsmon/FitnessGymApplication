@@ -22,7 +22,7 @@ namespace FitnessGymApplication.Models
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]
          
-        public string MaxParticipants { get; set; }
+        public int MaxParticipants { get; set; }
 
         public int IdTrainingProgram { get; set; }
         public int IdCoach { get; set; }

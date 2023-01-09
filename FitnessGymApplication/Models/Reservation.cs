@@ -11,9 +11,6 @@ namespace FitnessGymApplication.Models
         [Key]
         public int Id { get; set; }
 
-        //Maximum participants possible during a session reservation.
-        public int MaxParticipants { get; set; }
-
         //Cancelled is like a boolean.
         //Reservation was created by client. By Default = 0 
         //Reservation was cancelled by client before the session date= 1 

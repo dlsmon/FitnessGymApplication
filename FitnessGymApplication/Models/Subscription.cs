@@ -14,6 +14,14 @@ namespace FitnessGymApplication.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", NullDisplayText = "Inconnue")]
         [Display(Name = "Date to leave")]
         public DateTime Sortdate { get; set; }
+
+        //Subscription price = Formula price x discount /100
+        [Display(Name = "Subscription price")]
+        public int? Price { get; set; }
+        
+        //Percentage 0 to 100. Exemple Black Friday
+        public int? Discount { get; set; }
+
         [Display(Name = "Client")]
         public int IdClient { get; set; }
         [ForeignKey("IdClient")]

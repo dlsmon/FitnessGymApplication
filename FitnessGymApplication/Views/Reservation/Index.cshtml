@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MaxParticipants)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Cancelled)
             </th>
             <th>
@@ -30,9 +27,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxParticipants)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cancelled)
             </td>

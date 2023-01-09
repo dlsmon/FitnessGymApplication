@@ -553,9 +553,9 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 1,
-                    //Date = "2023-01-14",
+                    //Date = "15/01/2023",
                     //Time = 
-                    MaxParticipants = "15",
+                    MaxParticipants = 15,
                     IdTrainingProgram = 1,
                     IdCoach = 1,
                     IdLocation = 2,
@@ -568,7 +568,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 2,
                     //Date = 15/01/2023,
                     //Time,
-                    MaxParticipants = "15",
+                    MaxParticipants = 15,
                     IdTrainingProgram = 2,
                     IdCoach = 5,
                     IdLocation = 7,
@@ -581,7 +581,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 3,
                     //Date = 16/01/2023,
                     //Time,
-                    MaxParticipants = "15",
+                    MaxParticipants = 15,
                     IdTrainingProgram = 3,
                     IdCoach = 5,
                     IdLocation = 9,
@@ -594,7 +594,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 4,
                     //Date = 14/01/2023,
                     //Time,
-                    MaxParticipants = "15",
+                    MaxParticipants = 15,
                     IdTrainingProgram = 4,
                     IdCoach = 3,
                     IdLocation = 8,
@@ -607,7 +607,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 5,
                     //Date = 15/01/2023,
                     //Time,
-                    MaxParticipants = "15",
+                    MaxParticipants = 15,
                     IdTrainingProgram = 2,
                     IdCoach = 1,
                     IdLocation = 3,
@@ -677,7 +677,7 @@ namespace FitnessGymApplication.Data.Seeding
                     //Entrydate = 01/01/2023,
                     //Sortdate = 01/01/2024,
                     IdClient = 2,
-                    IdFormula = 3
+                    IdFormula = 4
                 });
 
 
@@ -687,11 +687,37 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<Reservation>().HasData(
                 new Reservation()
                 {
-                    Id = 1,
-                    MaxParticipants = 15,
+                    Id = 1,                   
                     Cancelled = 0,
                     IdSession = 1,
-                    IdClient = 2                   
+                    IdClient = 1                   
+                });
+
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation()
+                {
+                    Id = 2,
+                    Cancelled = 0,
+                    IdSession = 1,
+                    IdClient = 1
+                });
+
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation()
+                {
+                    Id = 3,
+                    Cancelled = 0,
+                    IdSession = 1,
+                    IdClient = 2
+                });
+
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation()
+                {
+                    Id = 4,
+                    Cancelled = 1,
+                    IdSession = 1,
+                    IdClient = 2
                 });
 
 

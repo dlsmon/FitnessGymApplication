@@ -59,7 +59,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Entrydate,Sortdate,IdClient,IdFormula")] Subscription subscription)
+        public async Task<IActionResult> Create([Bind("Id,Entrydate,Sortdate,Price,Discount,IdClient,IdFormula")] Subscription subscription)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Entrydate,Sortdate,IdClient,IdFormula")] Subscription subscription)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Entrydate,Sortdate,Price,Discount,IdClient,IdFormula")] Subscription subscription)
         {
             if (id != subscription.Id)
             {

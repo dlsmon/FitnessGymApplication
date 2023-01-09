@@ -781,9 +781,6 @@ namespace FitnessGymApplication.Migrations
                     b.Property<int>("IdSession")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxParticipants")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IdClient");
@@ -797,9 +794,29 @@ namespace FitnessGymApplication.Migrations
                         {
                             Id = 1,
                             Cancelled = 0,
+                            IdClient = 1,
+                            IdSession = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cancelled = 0,
+                            IdClient = 1,
+                            IdSession = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cancelled = 0,
                             IdClient = 2,
-                            IdSession = 1,
-                            MaxParticipants = 15
+                            IdSession = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cancelled = 1,
+                            IdClient = 2,
+                            IdSession = 1
                         });
                 });
 
@@ -823,9 +840,8 @@ namespace FitnessGymApplication.Migrations
                     b.Property<int>("IdTrainingProgram")
                         .HasColumnType("int");
 
-                    b.Property<string>("MaxParticipants")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MaxParticipants")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("SessionDate")
                         .HasColumnType("datetime2");
@@ -853,7 +869,7 @@ namespace FitnessGymApplication.Migrations
                             IdFormula = 3,
                             IdLocation = 2,
                             IdTrainingProgram = 1,
-                            MaxParticipants = "15",
+                            MaxParticipants = 15,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -864,7 +880,7 @@ namespace FitnessGymApplication.Migrations
                             IdFormula = 3,
                             IdLocation = 7,
                             IdTrainingProgram = 2,
-                            MaxParticipants = "15",
+                            MaxParticipants = 15,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -875,7 +891,7 @@ namespace FitnessGymApplication.Migrations
                             IdFormula = 4,
                             IdLocation = 9,
                             IdTrainingProgram = 3,
-                            MaxParticipants = "15",
+                            MaxParticipants = 15,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -886,7 +902,7 @@ namespace FitnessGymApplication.Migrations
                             IdFormula = 4,
                             IdLocation = 8,
                             IdTrainingProgram = 4,
-                            MaxParticipants = "15",
+                            MaxParticipants = 15,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -897,7 +913,7 @@ namespace FitnessGymApplication.Migrations
                             IdFormula = 3,
                             IdLocation = 3,
                             IdTrainingProgram = 2,
-                            MaxParticipants = "15",
+                            MaxParticipants = 15,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -951,6 +967,9 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("Discount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Entrydate")
                         .HasColumnType("datetime2");
 
@@ -958,6 +977,9 @@ namespace FitnessGymApplication.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("IdFormula")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Price")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Sortdate")
@@ -985,7 +1007,7 @@ namespace FitnessGymApplication.Migrations
                             Id = 2,
                             Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdClient = 2,
-                            IdFormula = 3,
+                            IdFormula = 4,
                             Sortdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
