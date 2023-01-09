@@ -38,6 +38,8 @@ namespace FitnessGymApplication.Data
         public DbSet<FitnessGymApplication.Models.Session> Session { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Client> Client { get; set; } = default!;
         public DbSet<FitnessGymApplication.Models.Subscription> Subscription { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Reservation> Reservation { get; set; } = default!;
+        public DbSet<FitnessGymApplication.Models.Product> Product { get; set; } = default!;
 
 
     }

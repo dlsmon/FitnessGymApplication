@@ -10,14 +10,14 @@ namespace FitnessGymApplication.Models
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}", NullDisplayText = "Inconnue")]
-        [Display(Name = "Entry date")]
-        public DateTime Entrydate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Session date")]
+        public DateTime SessionDate { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:HH:mm:ss}", NullDisplayText = "Inconnue")]
-        //[Display(Name = "Time")]
-        //public DateTime Time { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH/mm/ss}", NullDisplayText = "Inconnue")]
+        [Display(Name = "Session Hour")]
+        public DateTime SessionHour { get; set; }
 
         //Maximum number of clients p
         [Display(Name = "Number of Participants : ")]

@@ -13,7 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Entrydate)
+                @Html.DisplayNameFor(model => model.SessionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionHour)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaxParticipants)
@@ -37,7 +40,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Entrydate)
+                @Html.DisplayFor(modelItem => item.SessionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionHour)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxParticipants)

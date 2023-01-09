@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230106134942_TEST")]
-    partial class TEST
+    [Migration("20230109151013_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -463,6 +463,16 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("IdClient");
 
                     b.ToTable("Goal");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CaloriesBurnt = 1000,
+                            Frequency = 3,
+                            IdClient = 1,
+                            Weight = 75
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.IndividualProgram", b =>
@@ -557,7 +567,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 1,
                             Address = "22 bis boulevard Saint Marcel",
                             City = "Paris",
-                            MaxParticipants = 200,
+                            MaxParticipants = 500,
                             Name = "Fitness Gym Austerlitz",
                             PostalCode = 75005
                         },
@@ -566,7 +576,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 2,
                             Address = "4/6 Passage Louis Philippe",
                             City = "Paris",
-                            MaxParticipants = 200,
+                            MaxParticipants = 450,
                             Name = "Fitness Gym Bastille",
                             PostalCode = 75011
                         },
@@ -575,7 +585,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 3,
                             Address = "123 Avenue de France ",
                             City = "Paris",
-                            MaxParticipants = 150,
+                            MaxParticipants = 350,
                             Name = "Fitness Gym BNF",
                             PostalCode = 75013
                         },
@@ -584,7 +594,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 4,
                             Address = "21 rue de la banque",
                             City = "Paris",
-                            MaxParticipants = 150,
+                            MaxParticipants = 350,
                             Name = "Fitness Gym Opera",
                             PostalCode = 75002
                         },
@@ -593,7 +603,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 5,
                             Address = "6 allée de la 2ème Division Blindée",
                             City = "Paris",
-                            MaxParticipants = 150,
+                            MaxParticipants = 500,
                             Name = "Fitness Gym Montparnasse",
                             PostalCode = 75014
                         },
@@ -602,7 +612,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 6,
                             Address = "81 rue de Lagny ",
                             City = "Paris",
-                            MaxParticipants = 250,
+                            MaxParticipants = 500,
                             Name = "Fitness Gym Nation",
                             PostalCode = 75020
                         },
@@ -611,7 +621,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 7,
                             Address = "44 rue de Clichy ",
                             City = "Paris",
-                            MaxParticipants = 220,
+                            MaxParticipants = 450,
                             Name = "Fitness Gym Saint-Lazarre",
                             PostalCode = 75009
                         },
@@ -620,7 +630,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 8,
                             Address = "19, avenue de la Liberté",
                             City = "Nanterre",
-                            MaxParticipants = 250,
+                            MaxParticipants = 600,
                             Name = "Fitness Gym La défense",
                             PostalCode = 92000
                         },
@@ -629,7 +639,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 9,
                             Address = "18-20, rue Auguste Perret",
                             City = "Villejuif",
-                            MaxParticipants = 250,
+                            MaxParticipants = 550,
                             Name = "Fitness Gym Villejuif",
                             PostalCode = 94800
                         },
@@ -638,7 +648,7 @@ namespace FitnessGymApplication.Migrations
                             ID = 10,
                             Address = "11, Rue Exelmans",
                             City = "Versailles",
-                            MaxParticipants = 350,
+                            MaxParticipants = 600,
                             Name = "Fitness Gym Versailles",
                             PostalCode = 78000
                         });
@@ -723,6 +733,40 @@ namespace FitnessGymApplication.Migrations
                     b.ToTable("MachineLocation");
                 });
 
+            modelBuilder.Entity("FitnessGymApplication.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.",
+                            Name = "Tapis de fitness"
+                        });
+                });
+
             modelBuilder.Entity("FitnessGymApplication.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -750,6 +794,16 @@ namespace FitnessGymApplication.Migrations
                     b.HasIndex("IdSession");
 
                     b.ToTable("Reservation");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cancelled = 0,
+                            IdClient = 2,
+                            IdSession = 1,
+                            MaxParticipants = 15
+                        });
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Session", b =>
@@ -759,9 +813,6 @@ namespace FitnessGymApplication.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Entrydate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdCoach")
                         .HasColumnType("int");
@@ -779,6 +830,12 @@ namespace FitnessGymApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("SessionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SessionHour")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdCoach");
@@ -795,52 +852,57 @@ namespace FitnessGymApplication.Migrations
                         new
                         {
                             Id = 1,
-                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdCoach = 1,
                             IdFormula = 3,
                             IdLocation = 2,
                             IdTrainingProgram = 1,
-                            MaxParticipants = "15"
+                            MaxParticipants = "15",
+                            SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdCoach = 5,
                             IdFormula = 3,
                             IdLocation = 7,
                             IdTrainingProgram = 2,
-                            MaxParticipants = "15"
+                            MaxParticipants = "15",
+                            SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdCoach = 5,
                             IdFormula = 4,
                             IdLocation = 9,
                             IdTrainingProgram = 3,
-                            MaxParticipants = "15"
+                            MaxParticipants = "15",
+                            SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
-                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdCoach = 3,
                             IdFormula = 4,
                             IdLocation = 8,
                             IdTrainingProgram = 4,
-                            MaxParticipants = "15"
+                            MaxParticipants = "15",
+                            SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
-                            Entrydate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdCoach = 1,
                             IdFormula = 3,
                             IdLocation = 3,
                             IdTrainingProgram = 2,
-                            MaxParticipants = "15"
+                            MaxParticipants = "15",
+                            SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -964,91 +1026,118 @@ namespace FitnessGymApplication.Migrations
                         new
                         {
                             Id = 1,
-                            Calories = 750,
-                            Description = "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..",
+                            Calories = 400,
+                            Description = "Dans l'au, au rythme de la musique, les sportifs enchaînent une chorégraphie qui vise à travailler le cardio et la tonicité musculaire. ",
                             Duration = 45,
-                            Intensity = 0,
-                            Name = "Body Attack"
+                            Intensity = 1,
+                            Name = "Aqua Bike"
                         },
                         new
                         {
                             Id = 2,
-                            Calories = 500,
-                            Description = "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.",
+                            Calories = 400,
+                            Description = " l’Aquagym est un sport qui se pratique dans l’eau, guidé par un coach et motivé par des musiques entraînantes. En réalisant des chorégraphies ludiques, vous améliorez votre forme physique sans vous en rendre compte et dans la bonne humeur.",
                             Duration = 45,
-                            Intensity = 0,
-                            Name = "Body Pump"
+                            Intensity = 2,
+                            Name = "Aqua Gym"
                         },
                         new
                         {
                             Id = 3,
-                            Calories = 500,
-                            Description = "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.",
+                            Calories = 750,
+                            Description = "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..",
                             Duration = 45,
-                            Intensity = 0,
-                            Name = "Body Sculpt"
+                            Intensity = 4,
+                            Name = "Body Attack"
                         },
                         new
                         {
                             Id = 4,
-                            Calories = 300,
-                            Description = "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.",
-                            Duration = 30,
-                            Intensity = 0,
-                            Name = "Cuisses Abdos Fessiers"
+                            Calories = 500,
+                            Description = "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.",
+                            Duration = 45,
+                            Intensity = 3,
+                            Name = "Body Pump"
                         },
                         new
                         {
                             Id = 5,
-                            Calories = 700,
-                            Description = "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.",
-                            Duration = 30,
-                            Intensity = 0,
-                            Name = "Hiit"
+                            Calories = 500,
+                            Description = "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.",
+                            Duration = 45,
+                            Intensity = 3,
+                            Name = "Body Sculpt"
                         },
                         new
                         {
                             Id = 6,
-                            Calories = 550,
-                            Description = "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !",
-                            Duration = 45,
-                            Intensity = 0,
-                            Name = "Step"
+                            Calories = 300,
+                            Description = "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.",
+                            Duration = 30,
+                            Intensity = 3,
+                            Name = "Cuisses Abdos Fessiers"
                         },
                         new
                         {
                             Id = 7,
-                            Calories = 500,
-                            Description = "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.",
-                            Duration = 60,
-                            Intensity = 0,
-                            Name = "Stretching"
+                            Calories = 700,
+                            Description = "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.",
+                            Duration = 30,
+                            Intensity = 4,
+                            Name = "Hiit"
                         },
                         new
                         {
                             Id = 8,
-                            Calories = 600,
-                            Description = "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.",
+                            Calories = 300,
+                            Description = "Prendre conscience de son corps en le musclant, c’est ce que propose le Pilates. Le pilate s’inspire de la danse, de la gymnastique et du yoga. Toute la séance est rythmée par des musiques zen et relaxantes. Tour à tour, vous alternez entre exercices d’équilibre afin de muscler la ceinture abdominale et exercices d’assouplissement, debout ou au sol, afin d’étirer les tendons et les muscles.",
                             Duration = 45,
-                            Intensity = 0,
-                            Name = "RPM"
+                            Intensity = 2,
+                            Name = "Pilates"
                         },
                         new
                         {
                             Id = 9,
-                            Calories = 400,
-                            Description = "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.",
-                            Duration = 60,
-                            Intensity = 0,
-                            Name = "Yoga"
+                            Calories = 550,
+                            Description = "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !",
+                            Duration = 45,
+                            Intensity = 1,
+                            Name = "Step"
                         },
                         new
                         {
                             Id = 10,
+                            Calories = 500,
+                            Description = "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.",
+                            Duration = 60,
+                            Intensity = 1,
+                            Name = "Stretching"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Calories = 600,
+                            Description = "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.",
+                            Duration = 45,
+                            Intensity = 4,
+                            Name = "RPM"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Calories = 400,
+                            Description = "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.",
+                            Duration = 60,
+                            Intensity = 2,
+                            Name = "Yoga"
+                        },
+                        new
+                        {
+                            Id = 13,
                             Calories = 550,
                             Description = "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.",
                             Duration = 45,
-                            Intensity = 0,
+                            Intensity = 1,
                             Name = "Zumba"
                         });
                 });

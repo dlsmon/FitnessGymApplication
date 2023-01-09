@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FitnessGymApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class TEST : Migration
+    public partial class test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -101,6 +101,21 @@ namespace FitnessGymApplication.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Machine", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -366,7 +381,8 @@ namespace FitnessGymApplication.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Entrydate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SessionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SessionHour = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaxParticipants = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IdTrainingProgram = table.Column<int>(type: "int", nullable: false),
                     IdCoach = table.Column<int>(type: "int", nullable: false),
@@ -469,16 +485,16 @@ namespace FitnessGymApplication.Migrations
                 columns: new[] { "ID", "Address", "City", "MaxParticipants", "Name", "PostalCode" },
                 values: new object[,]
                 {
-                    { 1, "22 bis boulevard Saint Marcel", "Paris", 200, "Fitness Gym Austerlitz", 75005 },
-                    { 2, "4/6 Passage Louis Philippe", "Paris", 200, "Fitness Gym Bastille", 75011 },
-                    { 3, "123 Avenue de France ", "Paris", 150, "Fitness Gym BNF", 75013 },
-                    { 4, "21 rue de la banque", "Paris", 150, "Fitness Gym Opera", 75002 },
-                    { 5, "6 allée de la 2ème Division Blindée", "Paris", 150, "Fitness Gym Montparnasse", 75014 },
-                    { 6, "81 rue de Lagny ", "Paris", 250, "Fitness Gym Nation", 75020 },
-                    { 7, "44 rue de Clichy ", "Paris", 220, "Fitness Gym Saint-Lazarre", 75009 },
-                    { 8, "19, avenue de la Liberté", "Nanterre", 250, "Fitness Gym La défense", 92000 },
-                    { 9, "18-20, rue Auguste Perret", "Villejuif", 250, "Fitness Gym Villejuif", 94800 },
-                    { 10, "11, Rue Exelmans", "Versailles", 350, "Fitness Gym Versailles", 78000 }
+                    { 1, "22 bis boulevard Saint Marcel", "Paris", 500, "Fitness Gym Austerlitz", 75005 },
+                    { 2, "4/6 Passage Louis Philippe", "Paris", 450, "Fitness Gym Bastille", 75011 },
+                    { 3, "123 Avenue de France ", "Paris", 350, "Fitness Gym BNF", 75013 },
+                    { 4, "21 rue de la banque", "Paris", 350, "Fitness Gym Opera", 75002 },
+                    { 5, "6 allée de la 2ème Division Blindée", "Paris", 500, "Fitness Gym Montparnasse", 75014 },
+                    { 6, "81 rue de Lagny ", "Paris", 500, "Fitness Gym Nation", 75020 },
+                    { 7, "44 rue de Clichy ", "Paris", 450, "Fitness Gym Saint-Lazarre", 75009 },
+                    { 8, "19, avenue de la Liberté", "Nanterre", 600, "Fitness Gym La défense", 92000 },
+                    { 9, "18-20, rue Auguste Perret", "Villejuif", 550, "Fitness Gym Villejuif", 94800 },
+                    { 10, "11, Rue Exelmans", "Versailles", 600, "Fitness Gym Versailles", 78000 }
                 });
 
             migrationBuilder.InsertData(
@@ -492,6 +508,11 @@ namespace FitnessGymApplication.Migrations
                     { 4, "Contrairement à ce que l'on pense, le rameur ne permet pas uniquement de travailler le haut du corps. Les jambes sont aussi très sollicitées et plus vous maîtrisez la technique, plus vous le ressentez ! Bras, épaules, jambes, abdominaux, lombaires… : en réalité, tous les muscles du corps sont mobilisés et renforcés, faisant du rameur un appareil très complet.", "Rameur", null },
                     { 5, "Idéale pour muscler les fessiers, cette machine vous laisse atteindre une extension maximale. Cela dit, aucun risque pour le bas de votre dos car la hanche n'effectue aucune rotation.", "Glute Drive", null }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "Id", "Description", "Name", "Photo" },
+                values: new object[] { 1, "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.", "Tapis de fitness", null });
 
             migrationBuilder.InsertData(
                 table: "Speciality",
@@ -509,16 +530,19 @@ namespace FitnessGymApplication.Migrations
                 columns: new[] { "Id", "Calories", "Description", "Duration", "Intensity", "Name" },
                 values: new object[,]
                 {
-                    { 1, 750, "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..", 45, 0, "Body Attack" },
-                    { 2, 500, "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.", 45, 0, "Body Pump" },
-                    { 3, 500, "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.", 45, 0, "Body Sculpt" },
-                    { 4, 300, "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.", 30, 0, "Cuisses Abdos Fessiers" },
-                    { 5, 700, "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.", 30, 0, "Hiit" },
-                    { 6, 550, "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !", 45, 0, "Step" },
-                    { 7, 500, "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.", 60, 0, "Stretching" },
-                    { 8, 600, "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.", 45, 0, "RPM" },
-                    { 9, 400, "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.", 60, 0, "Yoga" },
-                    { 10, 550, "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.", 45, 0, "Zumba" }
+                    { 1, 400, "Dans l'au, au rythme de la musique, les sportifs enchaînent une chorégraphie qui vise à travailler le cardio et la tonicité musculaire. ", 45, 1, "Aqua Bike" },
+                    { 2, 400, " l’Aquagym est un sport qui se pratique dans l’eau, guidé par un coach et motivé par des musiques entraînantes. En réalisant des chorégraphies ludiques, vous améliorez votre forme physique sans vous en rendre compte et dans la bonne humeur.", 45, 2, "Aqua Gym" },
+                    { 3, 750, "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..", 45, 4, "Body Attack" },
+                    { 4, 500, "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.", 45, 3, "Body Pump" },
+                    { 5, 500, "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.", 45, 3, "Body Sculpt" },
+                    { 6, 300, "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.", 30, 3, "Cuisses Abdos Fessiers" },
+                    { 7, 700, "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.", 30, 4, "Hiit" },
+                    { 8, 300, "Prendre conscience de son corps en le musclant, c’est ce que propose le Pilates. Le pilate s’inspire de la danse, de la gymnastique et du yoga. Toute la séance est rythmée par des musiques zen et relaxantes. Tour à tour, vous alternez entre exercices d’équilibre afin de muscler la ceinture abdominale et exercices d’assouplissement, debout ou au sol, afin d’étirer les tendons et les muscles.", 45, 2, "Pilates" },
+                    { 9, 550, "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !", 45, 1, "Step" },
+                    { 10, 500, "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.", 60, 1, "Stretching" },
+                    { 11, 600, "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.", 45, 4, "RPM" },
+                    { 12, 400, "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.", 60, 2, "Yoga" },
+                    { 13, 550, "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.", 45, 1, "Zumba" }
                 });
 
             migrationBuilder.InsertData(
@@ -533,6 +557,11 @@ namespace FitnessGymApplication.Migrations
                     { 5, " Romain", 1, "G.", null },
                     { 6, "Lia", 4, "T.", null }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Goal",
+                columns: new[] { "Id", "CaloriesBurnt", "Frequency", "IdClient", "Weight" },
+                values: new object[] { 1, 1000, 3, 1, 75 });
 
             migrationBuilder.InsertData(
                 table: "IndividualProgram",
@@ -557,15 +586,20 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Session",
-                columns: new[] { "Id", "Entrydate", "IdCoach", "IdFormula", "IdLocation", "IdTrainingProgram", "MaxParticipants" },
+                columns: new[] { "Id", "IdCoach", "IdFormula", "IdLocation", "IdTrainingProgram", "MaxParticipants", "SessionDate", "SessionHour" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3, 2, 1, "15" },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 3, 7, 2, "15" },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 4, 9, 3, "15" },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 4, 8, 4, "15" },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3, 3, 2, "15" }
+                    { 1, 1, 3, 2, 1, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 5, 3, 7, 2, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 5, 4, 9, 3, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, 3, 4, 8, 4, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, 1, 3, 3, 2, "15", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Reservation",
+                columns: new[] { "Id", "Cancelled", "IdClient", "IdSession", "MaxParticipants" },
+                values: new object[] { 1, 0, 2, 1, 15 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Coach_IdSpeciality",
@@ -701,6 +735,9 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "MachineLocation");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Reservation");

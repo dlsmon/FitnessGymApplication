@@ -72,7 +72,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Duration = 5,
                     Calories = 100
                 });
-                 
+
 
 
 
@@ -82,8 +82,32 @@ namespace FitnessGymApplication.Data.Seeding
                 new TrainingProgram()
                 {
                     Id = 1,
+                    Name = "Aqua Bike",
+                    Description = "Dans l'au, au rythme de la musique, les sportifs enchaînent une chorégraphie qui vise à travailler le cardio et la tonicité musculaire. ",
+                    Intensity = TrainingProgram.eIntensity.Easy,
+                    Duration = 45,
+                    Calories = 400
+                });
+
+            modelBuilder.Entity<TrainingProgram>().HasData(
+                new TrainingProgram()
+                {
+                    Id = 2,
+                    Name = "Aqua Gym",
+                    Description = " l’Aquagym est un sport qui se pratique dans l’eau, guidé par un coach et motivé par des musiques entraînantes. En réalisant des chorégraphies ludiques, vous améliorez votre forme physique sans vous en rendre compte et dans la bonne humeur.",
+                    Intensity = TrainingProgram.eIntensity.Medium,
+                    Duration = 45,
+                    Calories = 400
+                });
+
+
+            modelBuilder.Entity<TrainingProgram>().HasData(
+                new TrainingProgram()
+                {
+                    Id = 3,
                     Name = "Body Attack",
-                    Description = "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..",                   
+                    Description = "Fentes, squats, jumping jacks : plongez au cœur du Body Attack ! La dynamique de groupe vous donnera une énergie incroyable pour réaliser un entraînement de haute intensité. On y retrouve des mouvements athlétiques comme la course, les flexions ou les sauts, qui sont combinés à des exercices de renforcement comme les pompes. Chorégraphies et musiques donneront du rythme à vos fractionnés, pour une endurance décuplée..",
+                    Intensity = TrainingProgram.eIntensity.Extreme,
                     Duration = 45,
                     Calories = 750
                 });
@@ -91,9 +115,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 2,
+                    Id = 4,
                     Name = "Body Pump",
                     Description = "Bienvenue au  Body Pump ! Ce Group training LesMills tonifie et renforce le corps tout entier en permettant à vos muscles de se sculpter sans prendre de volume. Les mouvements sont simples et le nombre de répétitions est élevé : le secret des muscles fins et athlétiques.",
+                    Intensity = TrainingProgram.eIntensity.Hard,
                     Duration = 45,
                     Calories = 500
                 });
@@ -101,9 +126,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 3,
+                    Id = 5,
                     Name = "Body Sculpt",
                     Description = "Fruit de la rencontre entre le step et le Body Pump, le Body Sculpt vous aide à redessiner votre silhouette. Elastiques, haltères et bâtons sont les accessoires-clés pour parvenir à cet objectif, dans le cadre d’un Group training complet et accessible à tous. Après un court échauffement, vous alternez toutes les 5 minutes entre exercices cardio et renforcement musculaire, avant de travailler les abdos et de vous étirer.",
+                    Intensity = TrainingProgram.eIntensity.Hard,
                     Duration = 45,
                     Calories = 500
                 });
@@ -111,9 +137,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 4,
+                    Id = 6,
                     Name = "Cuisses Abdos Fessiers",
                     Description = "Cours traditionnel de cuisses abdos fessiers permettant de renforcer ses muscles afin de consolider les articulations et de limiter les douleurs dorsales.",
+                    Intensity = TrainingProgram.eIntensity.Hard,
                     Duration = 30,
                     Calories = 300
                 });
@@ -121,9 +148,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 5,
+                    Id = 7,
                     Name = "Hiit",
                     Description = "Le Hiit ou High Intensity Interval Training est un type d'entrainement bien connu pour son efficacité. C'est un cours où vous travaillerez principalement vos capacités cardio-vasculaires en association avec des mouvements de musculation. Le HIIT est un cours full body intense et complet qui permet aussi bien de travailler le renforcement musculaire que l'endurance, tout en se défoulant.",
+                    Intensity = TrainingProgram.eIntensity.Extreme,
                     Duration = 30,
                     Calories = 700
                 });
@@ -131,9 +159,21 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 6,
+                    Id = 8,
+                    Name = "Pilates",
+                    Description = "Prendre conscience de son corps en le musclant, c’est ce que propose le Pilates. Le pilate s’inspire de la danse, de la gymnastique et du yoga. Toute la séance est rythmée par des musiques zen et relaxantes. Tour à tour, vous alternez entre exercices d’équilibre afin de muscler la ceinture abdominale et exercices d’assouplissement, debout ou au sol, afin d’étirer les tendons et les muscles.",
+                    Intensity = TrainingProgram.eIntensity.Medium,
+                    Duration = 45,
+                    Calories = 300
+                });
+
+            modelBuilder.Entity<TrainingProgram>().HasData(
+                new TrainingProgram()
+                {
+                    Id = 9,
                     Name = "Step",
                     Description = "Initiez-vous à l’art du Step en enchaînant des chorégraphies sur et autour d’une marche à hauteur réglable, sur fond de musique rythmée. Montez, descendez, tournez : de la coordination, vous en aurez besoin à coups sûr ! Vous brûlerez aussi beaucoup de calories, quasiment sans vous en rendre compte tellement vous serez concentré sur vos mouvements !",
+                    Intensity = TrainingProgram.eIntensity.Easy,
                     Duration = 45,
                     Calories = 550
                 });
@@ -141,9 +181,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 7,
+                    Id = 10,
                     Name = "Stretching",
                     Description = "Ce cours est un mix entre le Yoga et le Pilates. Il permet, grâce à des étirements, de travailler sa posture, en particulier celle du dos, en étirant la colonne vertébrale et en évitant le tassement des vertèbres. Les exercices effectués pendant la séance aident à augmenter la souplesse générale du corps en assouplissant et en renforçant l'élasticité des tendons et des muscles. Cela permet également de retrouver une silhouette affinée et plus harmonieuse.",
+                    Intensity = TrainingProgram.eIntensity.Easy,
                     Duration = 60,
                     Calories = 500
                 });
@@ -151,9 +192,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 8,
+                    Id = 11,
                     Name = "RPM",
                     Description = "Son nom signifie « Round Per minute », soit tour à la minute en français.  Entraîné par une musique électrisante, vous pédalez et donnez le meilleur de vous-même pour atteindre votre cible. Ici, l’objectif est de vous entraîner comme à l’extérieur mais de façon plus intensive.",
+                    Intensity = TrainingProgram.eIntensity.Extreme,
                     Duration = 45,
                     Calories = 600
                 });
@@ -161,9 +203,10 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 9,
+                    Id = 12,
                     Name = "Yoga",
                     Description = "Entre dynamisme et calme, ce cours permet de gagner en force et en souplesse tout en respirant. Allez un peu plus loin chaque jour tout en respectant votre corps, en laissant frustration et égo de côté. Ressentez les postures du flow plutôt que d'essayer de dépasser vos limites. En apprenant à écouter son corps, on se connecte plus à son mental, pour plus de maîtrise de soi.",
+                    Intensity = TrainingProgram.eIntensity.Medium,
                     Duration = 60,
                     Calories = 400
                 });
@@ -171,14 +214,15 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<TrainingProgram>().HasData(
                 new TrainingProgram()
                 {
-                    Id = 10,
+                    Id = 13,
                     Name = "Zumba",
                     Description = "De la chorégraphie, toujours et encore pour vous faire bouger sur des rythmes endiablés. De la salsa au merengue, en passant par la cumbia, le reggaeton, le kuduro… De la variété plus qu’il n’en faut au sein d’un Group training aussi efficace qu’amusant.",
+                    Intensity = TrainingProgram.eIntensity.Easy,
                     Duration = 45,
                     Calories = 550
                 });
 
-        
+           
 
             //Formula
 
@@ -254,7 +298,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "22 bis boulevard Saint Marcel",
                     City = "Paris",
                     PostalCode = 75005,
-                    MaxParticipants = 200                   
+                    MaxParticipants = 500                   
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -265,7 +309,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "4/6 Passage Louis Philippe",
                     City = "Paris",
                     PostalCode = 75011,
-                    MaxParticipants = 200
+                    MaxParticipants = 450
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -276,7 +320,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "123 Avenue de France ",
                     City = "Paris",
                     PostalCode = 75013,
-                    MaxParticipants = 150
+                    MaxParticipants = 350
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -287,7 +331,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "21 rue de la banque",
                     City = "Paris",
                     PostalCode = 75002,
-                    MaxParticipants = 150
+                    MaxParticipants = 350
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -298,7 +342,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "6 allée de la 2ème Division Blindée",
                     City = "Paris",
                     PostalCode = 75014,
-                    MaxParticipants = 150
+                    MaxParticipants = 500
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -309,7 +353,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "81 rue de Lagny ",
                     City = "Paris",
                     PostalCode = 75020,
-                    MaxParticipants = 250
+                    MaxParticipants = 500
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -320,7 +364,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "44 rue de Clichy ",
                     City = "Paris",
                     PostalCode = 75009,
-                    MaxParticipants = 220
+                    MaxParticipants = 450
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -331,7 +375,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "19, avenue de la Liberté",
                     City = "Nanterre",
                     PostalCode = 92000,
-                    MaxParticipants = 250
+                    MaxParticipants = 600
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -342,7 +386,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "18-20, rue Auguste Perret",
                     City = "Villejuif",
                     PostalCode = 94800,
-                    MaxParticipants = 250
+                    MaxParticipants = 550
                 });
 
             modelBuilder.Entity<Location>().HasData(
@@ -353,7 +397,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Address = "11, Rue Exelmans",
                     City = "Versailles",
                     PostalCode = 78000,
-                    MaxParticipants = 350
+                    MaxParticipants = 600
                 });
 
 
@@ -509,8 +553,8 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 1,
-                    //Entrydate = 14/01/2023 10:40:40,
-                    //Time
+                    //Date = "2023-01-14",
+                    //Time = 
                     MaxParticipants = "15",
                     IdTrainingProgram = 1,
                     IdCoach = 1,
@@ -522,7 +566,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 2,
-                    //Entrydate = 15/01/2023,
+                    //Date = 15/01/2023,
                     //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 2,
@@ -535,7 +579,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 3,
-                    //Entrydate = 16/01/2023,
+                    //Date = 16/01/2023,
                     //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 3,
@@ -548,7 +592,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 4,
-                    //Entrydate = 14/01/2023,
+                    //Date = 14/01/2023,
                     //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 4,
@@ -561,7 +605,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Session()
                 {
                     Id = 5,
-                    //Entrydate = 15/01/2023,
+                    //Date = 15/01/2023,
                     //Time,
                     MaxParticipants = "15",
                     IdTrainingProgram = 2,
@@ -640,7 +684,28 @@ namespace FitnessGymApplication.Data.Seeding
 
             //Reservation
 
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation()
+                {
+                    Id = 1,
+                    MaxParticipants = 15,
+                    Cancelled = 0,
+                    IdSession = 1,
+                    IdClient = 2                   
+                });
+
+
             //Goal
+
+            modelBuilder.Entity<Goal>().HasData(
+                new Goal()
+                {
+                    Id = 1,
+                    Weight = 75,
+                    Frequency = Goal.eFrequency.Tree,
+                    CaloriesBurnt = 1000,
+                    IdClient = 1
+                });
 
 
             //Machine
@@ -691,11 +756,17 @@ namespace FitnessGymApplication.Data.Seeding
                 });
 
 
-            
-
             //Product
 
-            
+            modelBuilder.Entity<Product>().HasData(
+                new Product()
+                {
+                    Id = 1,
+                    Name = "Tapis de fitness",
+                    //Photo = 
+                    Description = "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement."
+                });
+
 
 
 

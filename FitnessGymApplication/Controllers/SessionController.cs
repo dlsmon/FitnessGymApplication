@@ -63,7 +63,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Entrydate,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
+        public async Task<IActionResult> Create([Bind("Id,SessionDate,SessionHour,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Entrydate,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,SessionDate,SessionHour,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
         {
             if (id != session.Id)
             {
