@@ -10,6 +10,7 @@ namespace FitnessGymApplication.Models
             None = 0,
             Yes = 1    
         }
+      
 
         [Key]
         public int ID { get; set; }
@@ -18,6 +19,10 @@ namespace FitnessGymApplication.Models
         [Display(Name ="Formula Name")]
         public string Name { get; set; }
         public string? Description { get; set; }
+
+        [Display(Name="Formula Rank")]
+        public int FormulaRank { get; set; }
+
         public int Price { get; set; }
         public eCommitement Commitement { get; set; }
     }

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace FitnessGymApplication.Models
 {
     public class Session
-    {
+    {       
         [Key]
         public int Id { get; set; }
 
@@ -24,10 +24,12 @@ namespace FitnessGymApplication.Models
          
         public int MaxParticipants { get; set; }
 
-        public int IdTrainingProgram { get; set; }
-        public int IdCoach { get; set; }
-        public int IdLocation { get; set; }
-        public int IdFormula { get; set; }
+        public int FormulaRank { get; set; }
+
+        public int? IdTrainingProgram { get; set; }
+        public int? IdCoach { get; set; }
+        public int? IdLocation { get; set; }
+        
 
         //Foreign Key
         [ForeignKey("IdTrainingProgram")]
@@ -37,11 +39,7 @@ namespace FitnessGymApplication.Models
         public virtual Coach? Coach { get; set; }
 
         [ForeignKey("IdLocation")]
-        public virtual Location? Location { get; set; }
-
-        [ForeignKey("IdFormula")]
-        public virtual Formula? Formula { get; set; }
-
+        public virtual Location? Location { get; set; }  
 
         public virtual ICollection<Reservation>? Reservations { get; set; }
 

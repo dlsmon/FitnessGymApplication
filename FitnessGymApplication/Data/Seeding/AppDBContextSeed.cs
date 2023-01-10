@@ -222,7 +222,7 @@ namespace FitnessGymApplication.Data.Seeding
                     Calories = 550
                 });
 
-           
+
 
             //Formula
 
@@ -230,48 +230,9 @@ namespace FitnessGymApplication.Data.Seeding
                 new Formula()
                 {
                     ID = 1,
-                    Name = "Classique fit 1",
-                    Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                    Price = 29,                 
-                    Commitement = Formula.eCommitement.Yes
-                });
-
-            modelBuilder.Entity<Formula>().HasData(
-                new Formula()
-                {
-                    ID = 2,
-                    Name = "Classique fit 2",
-                    Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                    Price = 34,
-                    Commitement = Formula.eCommitement.None
-                });
-
-            modelBuilder.Entity<Formula>().HasData(
-                new Formula()
-                {
-                    ID = 3,
-                    Name = "Premium fit 1",
-                    Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                    Price = 36,
-                    Commitement = Formula.eCommitement.Yes
-                });
-
-            modelBuilder.Entity<Formula>().HasData(
-                new Formula()
-                {
-                    ID = 4,
-                    Name = "Premium fit 2",
-                    Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                    Price = 40,
-                    Commitement = Formula.eCommitement.None
-                });
-
-            modelBuilder.Entity<Formula>().HasData(
-                new Formula()
-                {
-                    ID = 5,
                     Name = "No Gym No Problem Month",
                     Description = "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
+                    FormulaRank = 1,
                     Price = 9,
                     Commitement = Formula.eCommitement.None
                 });
@@ -279,12 +240,58 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<Formula>().HasData(
                 new Formula()
                 {
-                    ID = 6,
+                    ID = 2,
                     Name = "No Gym No Problem Year",
                     Description = "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
-                    Price = 29,
+                    FormulaRank = 1,
+                    Price = 59,
                     Commitement = Formula.eCommitement.None
                 });
+
+
+            modelBuilder.Entity<Formula>().HasData(
+                new Formula()
+                {
+                    ID = 3,
+                    Name = "Classique fit 1",
+                    Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                    FormulaRank = 2,
+                    Price = 29,                 
+                    Commitement = Formula.eCommitement.Yes
+                });
+
+            modelBuilder.Entity<Formula>().HasData(
+                new Formula()
+                {
+                    ID = 4,
+                    Name = "Classique fit 2",
+                    Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                    FormulaRank = 2,
+                    Price = 34,
+                    Commitement = Formula.eCommitement.None
+                });
+
+            modelBuilder.Entity<Formula>().HasData(
+                new Formula()
+                {
+                    ID = 5,
+                    Name = "Premium fit 1",
+                    Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                    FormulaRank = 3,
+                    Price = 39,
+                    Commitement = Formula.eCommitement.Yes
+                });
+
+            modelBuilder.Entity<Formula>().HasData(
+                new Formula()
+                {
+                    ID = 6,
+                    Name = "Premium fit 2",
+                    Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                    FormulaRank = 3,
+                    Price = 44,
+                    Commitement = Formula.eCommitement.None
+                });           
 
             
 
@@ -556,10 +563,10 @@ namespace FitnessGymApplication.Data.Seeding
                     //Date = "15/01/2023",
                     //Time = 
                     MaxParticipants = 15,
+                    FormulaRank = 3,
                     IdTrainingProgram = 1,
                     IdCoach = 1,
                     IdLocation = 2,
-                    IdFormula = 3 
                 });
 
             modelBuilder.Entity<Session>().HasData(
@@ -568,11 +575,11 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 2,
                     //Date = 15/01/2023,
                     //Time,
-                    MaxParticipants = 15,
+                    MaxParticipants = 20,
+                    FormulaRank = 3,
                     IdTrainingProgram = 2,
                     IdCoach = 5,
                     IdLocation = 7,
-                    IdFormula = 3
                 });
 
             modelBuilder.Entity<Session>().HasData(
@@ -581,11 +588,11 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 3,
                     //Date = 16/01/2023,
                     //Time,
-                    MaxParticipants = 15,
+                    MaxParticipants = 30,
+                    FormulaRank = 3,
                     IdTrainingProgram = 3,
                     IdCoach = 5,
                     IdLocation = 9,
-                    IdFormula = 4
                 });
 
             modelBuilder.Entity<Session>().HasData(
@@ -594,11 +601,11 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 4,
                     //Date = 14/01/2023,
                     //Time,
-                    MaxParticipants = 15,
+                    MaxParticipants = 22,
+                    FormulaRank = 3,
                     IdTrainingProgram = 4,
                     IdCoach = 3,
                     IdLocation = 8,
-                    IdFormula = 4
                 });
 
             modelBuilder.Entity<Session>().HasData(
@@ -607,11 +614,11 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 5,
                     //Date = 15/01/2023,
                     //Time,
-                    MaxParticipants = 15,
+                    MaxParticipants = 18,
+                    FormulaRank = 3,
                     IdTrainingProgram = 2,
                     IdCoach = 1,
                     IdLocation = 3,
-                    IdFormula = 3
                 });
 
 
@@ -688,7 +695,7 @@ namespace FitnessGymApplication.Data.Seeding
                 new Reservation()
                 {
                     Id = 1,                   
-                    Cancelled = 0,
+                    Cancelled = Reservation.eCancelled.No,
                     IdSession = 1,
                     IdClient = 1                   
                 });
@@ -697,8 +704,8 @@ namespace FitnessGymApplication.Data.Seeding
                 new Reservation()
                 {
                     Id = 2,
-                    Cancelled = 0,
-                    IdSession = 1,
+                    Cancelled = Reservation.eCancelled.No,
+                    IdSession = 2,
                     IdClient = 1
                 });
 
@@ -706,8 +713,8 @@ namespace FitnessGymApplication.Data.Seeding
                 new Reservation()
                 {
                     Id = 3,
-                    Cancelled = 0,
-                    IdSession = 1,
+                    Cancelled = Reservation.eCancelled.No,
+                    IdSession = 5,
                     IdClient = 2
                 });
 
@@ -715,8 +722,8 @@ namespace FitnessGymApplication.Data.Seeding
                 new Reservation()
                 {
                     Id = 4,
-                    Cancelled = 1,
-                    IdSession = 1,
+                    Cancelled = Reservation.eCancelled.Yes,
+                    IdSession = 3,
                     IdClient = 2
                 });
 
@@ -790,7 +797,8 @@ namespace FitnessGymApplication.Data.Seeding
                     Id = 1,
                     Name = "Tapis de fitness",
                     //Photo = 
-                    Description = "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement."
+                    Description = "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.",
+                    Price = 15,
                 });
 
 

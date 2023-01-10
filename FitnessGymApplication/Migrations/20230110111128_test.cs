@@ -63,6 +63,7 @@ namespace FitnessGymApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FormulaRank = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Commitement = table.Column<int>(type: "int", nullable: false)
                 },
@@ -111,7 +112,8 @@ namespace FitnessGymApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -386,10 +388,10 @@ namespace FitnessGymApplication.Migrations
                     SessionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SessionHour = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaxParticipants = table.Column<int>(type: "int", nullable: false),
-                    IdTrainingProgram = table.Column<int>(type: "int", nullable: false),
-                    IdCoach = table.Column<int>(type: "int", nullable: false),
-                    IdLocation = table.Column<int>(type: "int", nullable: false),
-                    IdFormula = table.Column<int>(type: "int", nullable: false)
+                    FormulaRank = table.Column<int>(type: "int", nullable: false),
+                    IdTrainingProgram = table.Column<int>(type: "int", nullable: true),
+                    IdCoach = table.Column<int>(type: "int", nullable: true),
+                    IdLocation = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -398,26 +400,17 @@ namespace FitnessGymApplication.Migrations
                         name: "FK_Session_Coach_IdCoach",
                         column: x => x.IdCoach,
                         principalTable: "Coach",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Session_Formula_IdFormula",
-                        column: x => x.IdFormula,
-                        principalTable: "Formula",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                     table.ForeignKey(
                         name: "FK_Session_Location_IdLocation",
                         column: x => x.IdLocation,
                         principalTable: "Location",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                     table.ForeignKey(
                         name: "FK_Session_TrainingProgram_IdTrainingProgram",
                         column: x => x.IdTrainingProgram,
                         principalTable: "TrainingProgram",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -470,15 +463,15 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Formula",
-                columns: new[] { "ID", "Commitement", "Description", "Name", "Price" },
+                columns: new[] { "ID", "Commitement", "Description", "FormulaRank", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, 1, "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", "Classique fit 1", 29 },
-                    { 2, 0, "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", "Classique fit 2", 34 },
-                    { 3, 1, "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", "Premium fit 1", 36 },
-                    { 4, 0, "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", "Premium fit 2", 40 },
-                    { 5, 0, "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", "No Gym No Problem Month", 9 },
-                    { 6, 0, "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", "No Gym No Problem Year", 29 }
+                    { 1, 0, "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", 1, "No Gym No Problem Month", 9 },
+                    { 2, 0, "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", 1, "No Gym No Problem Year", 59 },
+                    { 3, 1, "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", 2, "Classique fit 1", 29 },
+                    { 4, 0, "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", 2, "Classique fit 2", 34 },
+                    { 5, 1, "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", 3, "Premium fit 1", 39 },
+                    { 6, 0, "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", 3, "Premium fit 2", 44 }
                 });
 
             migrationBuilder.InsertData(
@@ -512,8 +505,8 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Product",
-                columns: new[] { "Id", "Description", "Name", "Photo" },
-                values: new object[] { 1, "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.", "Tapis de fitness", null });
+                columns: new[] { "Id", "Description", "Name", "Photo", "Price" },
+                values: new object[] { 1, "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.", "Tapis de fitness", null, 15 });
 
             migrationBuilder.InsertData(
                 table: "Speciality",
@@ -587,14 +580,14 @@ namespace FitnessGymApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Session",
-                columns: new[] { "Id", "IdCoach", "IdFormula", "IdLocation", "IdTrainingProgram", "MaxParticipants", "SessionDate", "SessionHour" },
+                columns: new[] { "Id", "FormulaRank", "IdCoach", "IdLocation", "IdTrainingProgram", "MaxParticipants", "SessionDate", "SessionHour" },
                 values: new object[,]
                 {
-                    { 1, 1, 3, 2, 1, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 5, 3, 7, 2, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 5, 4, 9, 3, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 3, 4, 8, 4, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 1, 3, 3, 2, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 3, 1, 2, 1, 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 3, 5, 7, 2, 20, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 3, 5, 9, 3, 30, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, 3, 3, 8, 4, 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, 3, 1, 3, 2, 18, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -603,9 +596,9 @@ namespace FitnessGymApplication.Migrations
                 values: new object[,]
                 {
                     { 1, 0, 1, 1 },
-                    { 2, 0, 1, 1 },
-                    { 3, 0, 2, 1 },
-                    { 4, 1, 2, 1 }
+                    { 2, 0, 1, 2 },
+                    { 3, 0, 2, 5 },
+                    { 4, 1, 2, 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -694,11 +687,6 @@ namespace FitnessGymApplication.Migrations
                 column: "IdCoach");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Session_IdFormula",
-                table: "Session",
-                column: "IdFormula");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Session_IdLocation",
                 table: "Session",
                 column: "IdLocation");
@@ -765,10 +753,10 @@ namespace FitnessGymApplication.Migrations
                 name: "Client");
 
             migrationBuilder.DropTable(
-                name: "Coach");
+                name: "Formula");
 
             migrationBuilder.DropTable(
-                name: "Formula");
+                name: "Coach");
 
             migrationBuilder.DropTable(
                 name: "Location");

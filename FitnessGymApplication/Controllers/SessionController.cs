@@ -22,7 +22,7 @@ namespace FitnessGymApplication.Controllers
         // GET: Session
         public async Task<IActionResult> Index()
         {
-            var dBContext = _context.Session.Include(s => s.Coach).Include(s => s.Formula).Include(s => s.Location).Include(s => s.TrainingProgram);
+            var dBContext = _context.Session.Include(s => s.Coach).Include(s => s.Location).Include(s => s.TrainingProgram);
             return View(await dBContext.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace FitnessGymApplication.Controllers
 
             var session = await _context.Session
                 .Include(s => s.Coach)
-                .Include(s => s.Formula)
                 .Include(s => s.Location)
                 .Include(s => s.TrainingProgram)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -52,7 +51,6 @@ namespace FitnessGymApplication.Controllers
         public IActionResult Create()
         {
             ViewData["IdCoach"] = new SelectList(_context.Coach, "ID", "FirstName");
-            ViewData["IdFormula"] = new SelectList(_context.Formula, "ID", "Name");
             ViewData["IdLocation"] = new SelectList(_context.Location, "ID", "Address");
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id");
             return View();
@@ -63,7 +61,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SessionDate,SessionHour,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
+        public async Task<IActionResult> Create([Bind("Id,SessionDate,SessionHour,MaxParticipants,FormulaRank,IdTrainingProgram,IdCoach,IdLocation")] Session session)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +70,6 @@ namespace FitnessGymApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCoach"] = new SelectList(_context.Coach, "ID", "FirstName", session.IdCoach);
-            ViewData["IdFormula"] = new SelectList(_context.Formula, "ID", "Name", session.IdFormula);
             ViewData["IdLocation"] = new SelectList(_context.Location, "ID", "Address", session.IdLocation);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", session.IdTrainingProgram);
             return View(session);
@@ -92,7 +89,6 @@ namespace FitnessGymApplication.Controllers
                 return NotFound();
             }
             ViewData["IdCoach"] = new SelectList(_context.Coach, "ID", "FirstName", session.IdCoach);
-            ViewData["IdFormula"] = new SelectList(_context.Formula, "ID", "Name", session.IdFormula);
             ViewData["IdLocation"] = new SelectList(_context.Location, "ID", "Address", session.IdLocation);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", session.IdTrainingProgram);
             return View(session);
@@ -103,7 +99,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SessionDate,SessionHour,MaxParticipants,IdTrainingProgram,IdCoach,IdLocation,IdFormula")] Session session)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,SessionDate,SessionHour,MaxParticipants,FormulaRank,IdTrainingProgram,IdCoach,IdLocation")] Session session)
         {
             if (id != session.Id)
             {
@@ -131,7 +127,6 @@ namespace FitnessGymApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCoach"] = new SelectList(_context.Coach, "ID", "FirstName", session.IdCoach);
-            ViewData["IdFormula"] = new SelectList(_context.Formula, "ID", "Name", session.IdFormula);
             ViewData["IdLocation"] = new SelectList(_context.Location, "ID", "Address", session.IdLocation);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", session.IdTrainingProgram);
             return View(session);
@@ -147,7 +142,6 @@ namespace FitnessGymApplication.Controllers
 
             var session = await _context.Session
                 .Include(s => s.Coach)
-                .Include(s => s.Formula)
                 .Include(s => s.Location)
                 .Include(s => s.TrainingProgram)
                 .FirstOrDefaultAsync(m => m.Id == id);

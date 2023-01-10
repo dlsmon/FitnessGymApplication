@@ -372,6 +372,9 @@ namespace FitnessGymApplication.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("FormulaRank")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -388,50 +391,56 @@ namespace FitnessGymApplication.Migrations
                         new
                         {
                             ID = 1,
-                            Commitement = 1,
-                            Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                            Name = "Classique fit 1",
-                            Price = 29
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Commitement = 0,
-                            Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                            Name = "Classique fit 2",
-                            Price = 34
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Commitement = 1,
-                            Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
-                            Name = "Premium fit 1",
-                            Price = 36
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Commitement = 0,
-                            Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
-                            Name = "Premium fit 2",
-                            Price = 40
-                        },
-                        new
-                        {
-                            ID = 5,
                             Commitement = 0,
                             Description = "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
+                            FormulaRank = 1,
                             Name = "No Gym No Problem Month",
                             Price = 9
                         },
                         new
                         {
-                            ID = 6,
+                            ID = 2,
                             Commitement = 0,
                             Description = "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.",
+                            FormulaRank = 1,
                             Name = "No Gym No Problem Year",
+                            Price = 59
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Commitement = 1,
+                            Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            FormulaRank = 2,
+                            Name = "Classique fit 1",
                             Price = 29
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Commitement = 0,
+                            Description = "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                            FormulaRank = 2,
+                            Name = "Classique fit 2",
+                            Price = 34
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Commitement = 1,
+                            Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            FormulaRank = 3,
+                            Name = "Premium fit 1",
+                            Price = 39
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Commitement = 0,
+                            Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                            FormulaRank = 3,
+                            Name = "Premium fit 2",
+                            Price = 44
                         });
                 });
 
@@ -751,6 +760,9 @@ namespace FitnessGymApplication.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Product");
@@ -760,7 +772,8 @@ namespace FitnessGymApplication.Migrations
                         {
                             Id = 1,
                             Description = "Un tapis spécialement conçu pour s’adapter à vos exercices au sol. Vous pourrez faire vos abdominaux ou réaliser vos étirements confortablement.",
-                            Name = "Tapis de fitness"
+                            Name = "Tapis de fitness",
+                            Price = 15
                         });
                 });
 
@@ -802,21 +815,21 @@ namespace FitnessGymApplication.Migrations
                             Id = 2,
                             Cancelled = 0,
                             IdClient = 1,
-                            IdSession = 1
+                            IdSession = 2
                         },
                         new
                         {
                             Id = 3,
                             Cancelled = 0,
                             IdClient = 2,
-                            IdSession = 1
+                            IdSession = 5
                         },
                         new
                         {
                             Id = 4,
                             Cancelled = 1,
                             IdClient = 2,
-                            IdSession = 1
+                            IdSession = 3
                         });
                 });
 
@@ -828,16 +841,16 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("IdCoach")
+                    b.Property<int>("FormulaRank")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdFormula")
+                    b.Property<int?>("IdCoach")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdLocation")
+                    b.Property<int?>("IdLocation")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdTrainingProgram")
+                    b.Property<int?>("IdTrainingProgram")
                         .HasColumnType("int");
 
                     b.Property<int>("MaxParticipants")
@@ -853,8 +866,6 @@ namespace FitnessGymApplication.Migrations
 
                     b.HasIndex("IdCoach");
 
-                    b.HasIndex("IdFormula");
-
                     b.HasIndex("IdLocation");
 
                     b.HasIndex("IdTrainingProgram");
@@ -865,8 +876,8 @@ namespace FitnessGymApplication.Migrations
                         new
                         {
                             Id = 1,
+                            FormulaRank = 3,
                             IdCoach = 1,
-                            IdFormula = 3,
                             IdLocation = 2,
                             IdTrainingProgram = 1,
                             MaxParticipants = 15,
@@ -876,44 +887,44 @@ namespace FitnessGymApplication.Migrations
                         new
                         {
                             Id = 2,
+                            FormulaRank = 3,
                             IdCoach = 5,
-                            IdFormula = 3,
                             IdLocation = 7,
                             IdTrainingProgram = 2,
-                            MaxParticipants = 15,
+                            MaxParticipants = 20,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
+                            FormulaRank = 3,
                             IdCoach = 5,
-                            IdFormula = 4,
                             IdLocation = 9,
                             IdTrainingProgram = 3,
-                            MaxParticipants = 15,
+                            MaxParticipants = 30,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
+                            FormulaRank = 3,
                             IdCoach = 3,
-                            IdFormula = 4,
                             IdLocation = 8,
                             IdTrainingProgram = 4,
-                            MaxParticipants = 15,
+                            MaxParticipants = 22,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
+                            FormulaRank = 3,
                             IdCoach = 1,
-                            IdFormula = 3,
                             IdLocation = 3,
                             IdTrainingProgram = 2,
-                            MaxParticipants = 15,
+                            MaxParticipants = 18,
                             SessionDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SessionHour = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -1318,31 +1329,17 @@ namespace FitnessGymApplication.Migrations
                 {
                     b.HasOne("FitnessGymApplication.Models.Coach", "Coach")
                         .WithMany()
-                        .HasForeignKey("IdCoach")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FitnessGymApplication.Models.Formula", "Formula")
-                        .WithMany()
-                        .HasForeignKey("IdFormula")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdCoach");
 
                     b.HasOne("FitnessGymApplication.Models.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("IdLocation")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdLocation");
 
                     b.HasOne("FitnessGymApplication.Models.TrainingProgram", "TrainingProgram")
                         .WithMany("Sessions")
-                        .HasForeignKey("IdTrainingProgram")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdTrainingProgram");
 
                     b.Navigation("Coach");
-
-                    b.Navigation("Formula");
 
                     b.Navigation("Location");
 

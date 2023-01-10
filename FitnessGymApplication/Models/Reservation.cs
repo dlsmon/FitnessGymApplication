@@ -8,6 +8,12 @@ namespace FitnessGymApplication.Models
     //A Reservation can have many clients. Up to maxParticipants.
     public class Reservation
     {
+        public enum eCancelled
+        {
+            No = 0,
+            Yes = 1
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -15,7 +21,7 @@ namespace FitnessGymApplication.Models
         //Reservation was created by client. By Default = 0 
         //Reservation was cancelled by client before the session date= 1 
         //Reservation was created by client but the client didn't participate = 2.
-        public int Cancelled { get; set; }
+        public eCancelled Cancelled { get; set; }
         public int IdSession { get; set; }
         public int IdClient { get; set; }
 

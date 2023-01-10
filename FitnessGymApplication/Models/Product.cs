@@ -16,5 +16,6 @@ namespace FitnessGymApplication.Models
         [Display(Name = "Upload File")]
         //[Required(ErrorMessage = "Please choose file to upload.")]
         public string? Photo { get; set; }
+        public int Price { get; set; }
     }
 }

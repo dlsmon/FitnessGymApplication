@@ -56,7 +56,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Description,Price,Commitement")] Formula formula)
+        public async Task<IActionResult> Create([Bind("ID,Name,Description,FormulaRank,Price,Commitement")] Formula formula)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Description,Price,Commitement")] Formula formula)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Description,FormulaRank,Price,Commitement")] Formula formula)
         {
             if (id != formula.ID)
             {
