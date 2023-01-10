@@ -25,7 +25,7 @@ namespace FitnessGymApplication.Models
         }
 
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]

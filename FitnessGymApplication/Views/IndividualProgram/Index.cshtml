@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<FitnessGymApplication.Models.IndividualProgram>
 
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,13 +13,7 @@
     <thead>
         <tr>
             <th>
-               TrainingProgram ID
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.TrainingProgram)
-            </th>
-            <th>
-                Exercise ID
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Exercise)
@@ -35,14 +28,8 @@
                 @Html.DisplayFor(modelItem => item.TrainingProgram.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TrainingProgram.Name)
+                @Html.DisplayFor(modelItem => item.Exercise.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Exercise.Id)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Exercise.Name)
-                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

@@ -36,7 +36,7 @@ namespace FitnessGymApplication.Controllers
             }
 
             var client = await _context.Client
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (client == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace FitnessGymApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Sex,Height,Weight,Birthdate,Phonenumber,Adresse,Email,Password,Diseases,Hobbies,Newsletter,Freetrial")] Client client)
         {
-            if (id != client.Id)
+            if (id != client.ID)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace FitnessGymApplication.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClientExists(client.Id))
+                    if (!ClientExists(client.ID))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace FitnessGymApplication.Controllers
             }
 
             var client = await _context.Client
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (client == null)
             {
                 return NotFound();
@@ -157,7 +157,7 @@ namespace FitnessGymApplication.Controllers
 
         private bool ClientExists(int id)
         {
-          return (_context.Client?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Client?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
