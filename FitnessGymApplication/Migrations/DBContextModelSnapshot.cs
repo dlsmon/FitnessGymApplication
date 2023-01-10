@@ -777,29 +777,6 @@ namespace FitnessGymApplication.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FitnessGymApplication.Models.MachineLocation", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("IdLocation")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdMachine")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("IdLocation");
-
-                    b.HasIndex("IdMachine");
-
-                    b.ToTable("MachineLocation");
-                });
-
             modelBuilder.Entity("FitnessGymApplication.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -1285,7 +1262,6 @@ namespace FitnessGymApplication.Migrations
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
                         .WithMany("Goal")
                         .HasForeignKey("IdClient")
-                        .HasForeignKey("FitnessGymApplication.Models.Goal", "IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1369,8 +1345,9 @@ namespace FitnessGymApplication.Migrations
 
                     b.Navigation("TrainingProgram");
                 });
+
             modelBuilder.Entity("FitnessGymApplication.Models.Subscription", b =>
-            modelBuilder.Entity("LocationMachine", b =>
+                {
                     b.HasOne("FitnessGymApplication.Models.Client", "Client")
                         .WithMany()
                         .HasForeignKey("IdClient")
@@ -1386,10 +1363,10 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("Client");
 
                     b.Navigation("Formula");
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("FitnessGymApplication.Models.Location", b =>
+            modelBuilder.Entity("FitnessGymApplication.Models.Client", b =>
+                {
                     b.Navigation("FavoriteCoach");
 
                     b.Navigation("FavoriteExercice");
@@ -1397,14 +1374,13 @@ namespace FitnessGymApplication.Migrations
                     b.Navigation("FavoriteLocation");
 
                     b.Navigation("Goal");
-                    b.Navigation("Goal");
 
                     b.Navigation("TrainingProgram");
                 });
 
-            modelBuilder.Entity("FitnessGymApplication.Models.Machine", b =>
+            modelBuilder.Entity("FitnessGymApplication.Models.Exercise", b =>
                 {
-                    b.Navigation("MachineLocations");
+                    b.Navigation("IndividualPrograms");
                 });
 
             modelBuilder.Entity("FitnessGymApplication.Models.Location", b =>
