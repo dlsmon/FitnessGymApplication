@@ -9,11 +9,13 @@ namespace FitnessGymApplication.Models
         [MaxLength(50), MinLength(3)]
         public string Name { get; set; }
         [Required]
-        [MaxLength(200), MinLength(10)]
+        [MaxLength(500)]
         public string Description { get; set; }
+
         [DataType(DataType.Upload)]
         [Display(Name = "Upload File")]
-        [Required(ErrorMessage = "Please choose file to upload.")]
-        public string Photo { get; set; }
+        //[Required(ErrorMessage = "Please choose file to upload.")]
+        public string? Photo { get; set; }
+        public int Price { get; set; }
     }
 }

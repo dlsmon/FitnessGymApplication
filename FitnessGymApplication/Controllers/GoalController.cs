@@ -48,7 +48,7 @@ namespace FitnessGymApplication.Controllers
         // GET: Goal/Create
         public IActionResult Create()
         {
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id");
+            ViewData["IdClient"] = new SelectList(_context.Client, "ID", "ID");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace FitnessGymApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
+            ViewData["IdClient"] = new SelectList(_context.Client, "ID", "ID", goal.IdClient);
             return View(goal);
         }
 
@@ -82,7 +82,7 @@ namespace FitnessGymApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
+            ViewData["IdClient"] = new SelectList(_context.Client, "ID", "ID", goal.IdClient);
             return View(goal);
         }
 
@@ -118,7 +118,7 @@ namespace FitnessGymApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdClient"] = new SelectList(_context.Client, "Id", "Id", goal.IdClient);
+            ViewData["IdClient"] = new SelectList(_context.Client, "ID", "ID", goal.IdClient);
             return View(goal);
         }
 

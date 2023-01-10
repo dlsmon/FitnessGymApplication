@@ -49,7 +49,7 @@ namespace FitnessGymApplication.Controllers
         // GET: IndividualProgram/Create
         public IActionResult Create()
         {
-            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Id");
+            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Name");
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id");
             return View();
         }
@@ -67,7 +67,7 @@ namespace FitnessGymApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Id", individualProgram.IdExercise);
+            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Name", individualProgram.IdExercise);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", individualProgram.IdTrainingProgram);
             return View(individualProgram);
         }
@@ -85,7 +85,7 @@ namespace FitnessGymApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Id", individualProgram.IdExercise);
+            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Name", individualProgram.IdExercise);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", individualProgram.IdTrainingProgram);
             return View(individualProgram);
         }
@@ -122,7 +122,7 @@ namespace FitnessGymApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Id", individualProgram.IdExercise);
+            ViewData["IdExercise"] = new SelectList(_context.Exercise, "Id", "Name", individualProgram.IdExercise);
             ViewData["IdTrainingProgram"] = new SelectList(_context.TrainingProgram, "Id", "Id", individualProgram.IdTrainingProgram);
             return View(individualProgram);
         }
