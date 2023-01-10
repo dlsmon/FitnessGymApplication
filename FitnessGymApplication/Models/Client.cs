@@ -24,6 +24,7 @@ namespace FitnessGymApplication.Models
             No
         }
 
+        [Key]
         public int Id { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -59,7 +60,12 @@ namespace FitnessGymApplication.Models
         //FreeTrial is boolean : if the client want a FreeTrial (1); if not (0)
         public eFreetrial Freetrial { get; set; }
 
-        
+        public virtual ICollection<Goal>? Goal { get; set; }
+        public virtual ICollection<FavoriteCoach>? FavoriteCoach { get; set; }
+        public virtual ICollection<FavoriteTrainingProgram>? TrainingProgram { get; set; }
+        public virtual ICollection<FavoriteExercise>? FavoriteExercice { get; set; }
+        public virtual ICollection<FavoriteLocation>? FavoriteLocation { get; set; }
+
 
 
     }
