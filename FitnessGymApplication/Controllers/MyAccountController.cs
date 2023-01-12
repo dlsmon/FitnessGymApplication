@@ -4,12 +4,32 @@ namespace FitnessGymApplication.Controllers
 {
     public class MyAccountController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index() 
         {
             return View();
         }      
 
-        public IActionResult MyInformation()
+        public IActionResult MyInformation() // Show details
+        {
+            return View();
+        }      
+
+        public IActionResult ChangePasseword()
+        {
+            return View();
+        }
+
+        public IActionResult MySybscription()
+        {
+            return View();
+        }
+
+        public IActionResult MyReservations()   //MyReservation = my planning
+        {
+            return View();
+        }
+
+        public IActionResult MyFavorites()
         {
             return View();
         }
@@ -18,12 +38,8 @@ namespace FitnessGymApplication.Controllers
         {
             return View();
         }
+              
 
-        public IActionResult MyReservation()
-        {
-            return View();
-        }
 
-     
     }
 }

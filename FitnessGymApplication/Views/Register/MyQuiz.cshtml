@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "One last effort ! We give everything !";
+    ViewData["Title"] = "You are almost done ! One last step before enjoying our Training Programs !";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -11,7 +11,7 @@
 
 <section>
 
-    <h5>My profil and my goals:</h5> <br />
+    <h2>My profil and my goals:</h2> <br />
 
     <div class="flex-container flex-md-row p-1 justify-content-evenly">
 
@@ -60,166 +60,137 @@
 
 
 
-<section>
-
-    <h5>My target: </h5>
-
-    <div class="row row-cols-1 row-cols-md-5 g-4" style="width: 68rem;">
-        <div class="col">
-            <div class="card h-100">
-                <img width="100%" class="card-img-top" src="\assets\img\balance.jfif" alt="Logo">
-                <div class="card-body">
-                    <h5 class="card-title">Perdre du poids</h5>
-                    <p class="card-text"> </p>
-                    <a href="#" class="btn btn-primary">Select</a>
+<div class="container">
+    <h2>My Target : </h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/perdre.jfif" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Perdre du poids</h4>
+                    <p>Select this target</p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img width="100%" class="card-img-top" src="\assets\img\halter.png" alt="Logo">
-                <div class="card-body">
-                    <h5 class="card-title">Me sculpter</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Select</a>
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/sculpter.jfif" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Se sculpter</h4>
+                    <p>Select this target</p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img width="100%" class="card-img-top" src="\assets\img\preparation.jfif" alt="Logo">
-                <div class="card-body">
-                    <h5 class="card-title">Optimiser ma préparation physique</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Select</a>
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/preparation.jfif" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Optimiser sa préparation physique</h4>
+                    <p>Select this target</p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img width="100%" class="card-img-top" src="\assets\img\ressource.jfif" alt="Logo">
-                <div class="card-body">
-                    <h5 class="card-title">Me ressourcer</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Select</a>
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/ressourcer.jfif" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Se ressourcer</h4>
+                    <p>Select this target</p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img width="100%" class="card-img-top" src="\assets\img\forme.png" alt="Logo">
-                <div class="card-body">
-                    <h5 class="card-title">Entretenir ma forme et ma santé</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Select</a>
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/forme.jfif" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Entretenir sa forme et sa santé</h4>
+                    <p>Select this target</p>
                 </div>
             </div>
         </div>
-    </div>
-
-</section>
-<br />
-
-
-<section>
-
-    <h5>My sport level: </h5>
-
-    <label for="customRange1" class="form-label"></label>
-    <p class="text-start"> Au top !</p>
-    <p class="text-center"> Good !</p>
-    <p class="text-center">  Medium  </p>
-    <p class="text-end"> Not very good...</p>
-
-    <input type="range" class="form-range" id="customRange1">
-
-</section>
-<br />
-
-
-<button type="button" class="btn btn-primary">Continue</button>
-
-
-<div class="content">
-    <div class="container">
-        <h2 class="my-5 text-center">Carousel #2</h2>
-    </div>
-    <div class="site-section bg-left-half mb-5">
-        <div class="container owl-2-style">
-            <h2 class="text-primary py-5 ">Our Products</h2>
-            <div class="owl-carousel owl-2 owl-loaded owl-drag">
-
-
-
-
-
-
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transform: translate3d(-950px, 0px, 0px); transition: all 1s ease 0s; width: 3801px;">
-                        <div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Consectetur Adipisicing Elit</a></h3>
-                            </div>
-                        </div><div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_5.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Beatae Doloribu</a></h3>
-                            </div>
-                        </div><div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_6.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Accusantium Eius Soluta</a></h3>
-                            </div>
-                        </div><div class="owl-item active" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Consectetur Adipisicing Elit</a></h3>
-                            </div>
-                        </div><div class="owl-item active" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Beatae Doloribu</a></h3>
-                            </div>
-                        </div><div class="owl-item active" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Accusantium Eius Soluta</a></h3>
-                            </div>
-                        </div><div class="owl-item" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Consectetur Adipisicing Elit</a></h3>
-                            </div>
-                        </div><div class="owl-item" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_5.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Beatae Doloribu</a></h3>
-                            </div>
-                        </div><div class="owl-item" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_6.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Accusantium Eius Soluta</a></h3>
-                            </div>
-                        </div><div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Consectetur Adipisicing Elit</a></h3>
-                            </div>
-                        </div><div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Beatae Doloribu</a></h3>
-                            </div>
-                        </div><div class="owl-item cloned" style="width: 296.667px; margin-right: 20px;">
-                            <div class="media-29101">
-                                <a href="#"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                                <h3><a href="#">Accusantium Eius Soluta</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
+        <div class="col-md-4 col-sm-6">
+            <div class="service_item">
+                <div class="service_photo">
+                    <img src="~/Assets/Images/" alt="Program">
+                    <div class="photo_overlay"></div>
+                </div>
+                <div class="service_caption">
+                    <h4>Entretenir sa santé</h4>
+                    <p>Select this target</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<section>
+
+    <h2>My sport level: </h2>
+
+    <div class="row row-cols-1 row-cols-md-5 g-4" style="width: 68rem;">
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top" src="~/Assets/Images/perdre.jfif" alt="Logo">
+                <div class="card-body">
+                    <h5 class="card-title">Au top! </h5>
+                    <p class="card-text"> I train every day or almost !</p>
+                    <a href="#" class="btn btn-primary">Select</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top" src="~/Assets/Images/sculpter.jfif" alt="Logo">
+                <div class="card-body">
+                    <h5 class="card-title">Good! </h5>
+                    <p class="card-text"> I train often : at least once a week ! </p>
+                    <a href="#" class="btn btn-primary">Select</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top" src="~/Assets/Images/preparation.jfif" alt="Logo">
+                <div class="card-body">
+                    <h5 class="card-title">Medium </h5>
+                    <p class="card-text">I train a little : at least once a month </p>
+                    <a href="#" class="btn btn-primary">Select</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top" src="~/Assets/Images/ressourcer.jfif" alt="Logo">
+                <div class="card-body">
+                    <h5 class="card-title">Not very good... </h5>
+                    <p class="card-text">Sport is not yet in my life... </p>
+                    <a href="#" class="btn btn-primary">Select</a>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+</section>
+<br />
+
+<button type="button" class="nav-link btn-primary" asp-controller="Register" asp-action="Welcome">Continue</button>
+
+<button type="button" class="btn btn-primary">Continue</button>
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Welcome">Continue</a>
