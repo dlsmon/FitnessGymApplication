@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "You are almost done ! One last step before enjoying our Training Programs !";
+    ViewData["Title"] = "You are almost done !";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -11,12 +11,12 @@
 
 <section>
 
-    <h2>My profil and my goals:</h2> <br />
+    <br />
 
     <div class="flex-container flex-md-row p-1 justify-content-evenly">
 
         <div class="p-1">
-            <h6>My informations: </h6> <br />
+            <h2>My profil: </h2> <br />
 
             <div class="mb-3" style="width: 15rem;">
                 <label for="exampleFormControlInput1" class="form-label">My weight:</label>
@@ -32,10 +32,10 @@
                 <label for="exampleFormControlInput1" class="form-label">My predisposition:</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Blood pressure, diabetes...">
             </div>
-        </div>
+        </div> <br /> <br />
 
         <div class="p-1">
-            <h6>My goals: </h6> <br />
+            <h2>My goals: </h2> <br />
 
             <div class="mb-3" style="width: 15rem;">
                 <label for="exampleFormControlInput1" class="form-label">My weight goal:</label>
@@ -60,8 +60,8 @@
 
 
 
-<div class="container">
-    <h2>My Target : </h2>
+<div class="container">   
+   
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <div class="service_item">
@@ -90,11 +90,12 @@
         <div class="col-md-4 col-sm-6">
             <div class="service_item">
                 <div class="service_photo">
-                    <img src="~/Assets/Images/preparation.jfif" alt="Program">
+                    <img src="~/Assets/Images/forme.jfif" alt="Program">
                     <div class="photo_overlay"></div>
                 </div>
                 <div class="service_caption">
-                    <h4>Optimiser sa préparation physique</h4>
+                    <h4>Entretenir sa forme</h4>
+                    <h4>et sa santé</h4>
                     <p>Select this target</p>
                 </div>
             </div>
@@ -114,73 +115,63 @@
         <div class="col-md-4 col-sm-6">
             <div class="service_item">
                 <div class="service_photo">
-                    <img src="~/Assets/Images/forme.jfif" alt="Program">
+                    <img src="~/Assets/Images/preparation.jfif" alt="Program">
                     <div class="photo_overlay"></div>
                 </div>
                 <div class="service_caption">
-                    <h4>Entretenir sa forme et sa santé</h4>
+                    <h4>Optimiser sa préparation physique</h4>
                     <p>Select this target</p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="service_item">
-                <div class="service_photo">
-                    <img src="~/Assets/Images/" alt="Program">
-                    <div class="photo_overlay"></div>
-                </div>
-                <div class="service_caption">
-                    <h4>Entretenir sa santé</h4>
-                    <p>Select this target</p>
-                </div>
-            </div>
-        </div>
+        </div>       
     </div>
 </div>
+<br />
+<br />
 
 
 <section>
 
-    <h2>My sport level: </h2>
-
+    <h2>My sport level: </h2> <br />
+    
     <div class="row row-cols-1 row-cols-md-5 g-4" style="width: 68rem;">
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top" src="~/Assets/Images/perdre.jfif" alt="Logo">
+                @*<img class="card-img-top" src="~/Assets/Images/perdre.jfif" alt="Logo">*@
                 <div class="card-body">
                     <h5 class="card-title">Au top! </h5>
                     <p class="card-text"> I train every day or almost !</p>
-                    <a href="#" class="btn btn-primary">Select</a>
+                    <a href="#" class="btn btn-danger">Select</a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top" src="~/Assets/Images/sculpter.jfif" alt="Logo">
+                @*<img class="card-img-top" src="~/Assets/Images/sculpter.jfif" alt="Logo">*@
                 <div class="card-body">
                     <h5 class="card-title">Good! </h5>
                     <p class="card-text"> I train often : at least once a week ! </p>
-                    <a href="#" class="btn btn-primary">Select</a>
+                    <a href="#" class="btn btn-danger">Select</a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top" src="~/Assets/Images/preparation.jfif" alt="Logo">
+                @*<img class="card-img-top" src="~/Assets/Images/preparation.jfif" alt="Logo">*@
                 <div class="card-body">
                     <h5 class="card-title">Medium </h5>
                     <p class="card-text">I train a little : at least once a month </p>
-                    <a href="#" class="btn btn-primary">Select</a>
+                    <a href="#" class="btn btn-danger">Select</a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top" src="~/Assets/Images/ressourcer.jfif" alt="Logo">
+                @*<img class="card-img-top" src="~/Assets/Images/ressourcer.jfif" alt="Logo">*@
                 <div class="card-body">
                     <h5 class="card-title">Not very good... </h5>
                     <p class="card-text">Sport is not yet in my life... </p>
-                    <a href="#" class="btn btn-primary">Select</a>
+                    <a href="#" class="btn btn-danger">Select</a>
                 </div>
             </div>
         </div>        
@@ -188,9 +179,10 @@
 
 </section>
 <br />
+<br />
+<br />
 
-<button type="button" class="nav-link btn-primary" asp-controller="Register" asp-action="Welcome">Continue</button>
 
-<button type="button" class="btn btn-primary">Continue</button>
-
-<a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Welcome">Continue</a>
+<form action="https://localhost:7222/register/welcome" method="get">
+    <button type="submit"class="btn btn-primary">Continue</button>
+</form>

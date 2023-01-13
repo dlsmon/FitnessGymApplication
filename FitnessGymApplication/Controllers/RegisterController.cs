@@ -9,6 +9,11 @@ namespace FitnessGymApplication.Controllers
             return View();
         }
 
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
         public IActionResult MyQuiz()
         {
             return View();
