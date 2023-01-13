@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<FitnessGymApplication.Models.Formula>
 
 @{
-    ViewData["Title"] = "Index";
+    //ViewData["Title"] = "Index";
+        <img src="~/image/Tarifs.jpg" />
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+</p>*@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+   @* <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -29,10 +30,57 @@
             </th>
             <th></th>
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+
+            <div class="col">
+                <div class="container card_tarifs-2">
+                    <div class="tarifs_head-nopadding-2">
+                        <div class="tarifs_header-colored" style="background:linear-gradient(to right, #0DA4C9 0%, #0CB6E1  34%, #0CB6E1  67%, #65DFFE  100%);">
+                            <p class="font_tarif-name-card font_white" id="name_Freemium">@Html.DisplayFor(modelItem => item.Name)</p>
+                        </div>
+
+                        <div class="p_description font_darkblue">
+                            <div>
+                                <div style="display: flex;align-items: center;justify-content: center; margin-top:10px;">
+                                    <div style="width: 30px;"><span>&nbsp;</span></div>
+
+                                    <div style="width: 65px;"><span class="font_tarif-price-card-big font_gradient-clearblue"> @Html.DisplayFor(modelItem => item.Price)€/mois</span></div>
+
+                                    <div style="width: 30px;"><span>&nbsp;</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="btn_centered">
+                            <a class="btn-neoness-small btn_neoness-gradient-red" href="/freemium" style="margin-bottom:25px; margin-top:-10px;" tabindex="-1">Inscrire</a>
+                        </div>
+                        <!-- div options -->
+
+                        <div class="tarifs_options-free text-align-left" style="margin-top:-10px; margin-bottom:15px; padding-bottom:20px;">
+                            <div class="div_option-indiv" id="option_freemium-1">
+                                <div class="row align-items-start" style="margin:0px;">
+
+                                    <div style="width:90%">
+                                        <div class="font_option-titre font_clearblue">
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+       @* <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -53,7 +101,7 @@
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
-        </tr>
+        </tr>*@
 }
     </tbody>
-</table>
+</div>

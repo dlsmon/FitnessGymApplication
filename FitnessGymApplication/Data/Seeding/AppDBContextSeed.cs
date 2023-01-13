@@ -2,8 +2,10 @@
 using FitnessGymApplication.Models;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.VisualBasic;
 using NuGet.ContentModel;
+using static System.Net.WebRequestMethods;
 using Location = FitnessGymApplication.Models.Location;
 
 namespace FitnessGymApplication.Data.Seeding
@@ -254,7 +256,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     ID = 3,
                     Name = "Classique fit 1",
-                    Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                    Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio .",
                     FormulaRank = 2,
                     Price = 29,                 
                     Commitement = Formula.eCommitement.Yes
@@ -276,7 +278,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     ID = 5,
                     Name = "Premium fit 1",
-                    Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                    Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur ",
                     FormulaRank = 3,
                     Price = 39,
                     Commitement = Formula.eCommitement.Yes
@@ -287,7 +289,7 @@ namespace FitnessGymApplication.Data.Seeding
                 {
                     ID = 6,
                     Name = "Premium fit 2",
-                    Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                    Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date.",
                     FormulaRank = 3,
                     Price = 44,
                     Commitement = Formula.eCommitement.None
@@ -445,7 +447,7 @@ namespace FitnessGymApplication.Data.Seeding
                     ID = 1,
                     FirstName = " Quentin",
                     LastName = "H.",
-                    Photo = "/Assets/Images/Quentin H.jfif",                   
+                    //Photo = https://www.neoness.fr/sites/default/files/2019-12/Untitled%20design.jpg,                   
                     IdSpeciality = 1,
                     
                 });

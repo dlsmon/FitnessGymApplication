@@ -1,16 +1,24 @@
 ﻿@model IEnumerable<FitnessGymApplication.Models.Location>
 
 @{
-    ViewData["Title"] = "Index";
+    <div class="bp11hl_paragraph_reference field field--name-field-bp11hl-paragraph-reference field--type-entity-reference field--label-hidden field__item">
+        <div class="paragraph paragraph-342 paragraph--type--bp11-header-light paragraph--view-mode--default">
+
+            <div class="container-bp11hl container text-center">
+
+                <div class="bp11hl_title field field--name-field-bp11hl-title field--type-string field--label-hidden field__item"><h1 class="field__item">Les Sports Clubs GYM FITNESS</h1></div>
+
+                <div class="bp11hl_description field field--name-field-bp11hl-description field--type-string field--label-hidden field__item">9 clubs en France, il y en a forcément un près de chez vous !</div>
+
+            </div>
+
+        </div>
+    </div>
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<div>
+    @*<thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -29,10 +37,29 @@
             </th>
             <th></th>
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+    <div class="card">
+    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5
+                            <h6 class="card-subtitle mb-2 text-muted">  @Html.DisplayFor(modelItem => item.Address)&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.City )&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.PostalCode)  </h6>
+                        <p>Nombre de participants: @Html.DisplayFor(modelItem => item.MaxParticipants)</p>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+
+                            <a class="btn-neoness-small btn_neoness-gradient-red" href="/freemium" style="margin-bottom:25px; margin-top:-10px;" tabindex="-1">Ajouter Aux Favoris</a>
+                        
+             </div>
+    </div>
+
+
+
+
+
+
+
+
+        @*<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -53,7 +80,7 @@
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
-        </tr>
+        </tr>*@
 }
     </tbody>
-</table>
+</div>

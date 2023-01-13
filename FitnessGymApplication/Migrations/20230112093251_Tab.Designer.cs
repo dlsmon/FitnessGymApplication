@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230110111128_test")]
-    partial class test
+    [Migration("20230112093251_Tab")]
+    partial class Tab
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

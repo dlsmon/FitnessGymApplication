@@ -24,6 +24,6 @@ namespace FitnessGymApplication.Models
         public int FormulaRank { get; set; }
 
         public int Price { get; set; }
-        public eCommitement Commitement { get; set; }
+        public eCommitement? Commitement { get; set; }
     }
 }
