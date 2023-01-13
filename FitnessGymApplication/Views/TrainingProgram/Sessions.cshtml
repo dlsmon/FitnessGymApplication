@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FitnessGymApplication.Models.Session>
+
+
+@{
+    ViewData["Title"] = ViewBag.TrainingProgram.Name ;
+}
+
+
+<img width="100%" class="img-fluid" src="\assets\images\gym-classes-cropped2.png" alt="Logo" />
+
+<h1>
+    Sessions available below
+</h1>
+
+<div class="d-flex flex-wrap justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class=" m-3 shadow">
+            <div class="card border border-0  rounded-2" style="width: 18rem;">
+                <img src="\assets\images\home-image.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.TrainingProgram.Name)</h5>
+                    <p class="card-text text-truncate">Location: La Defense</p>
+                    <p class="card-text text-truncate">Date: @Html.DisplayFor(modelItem => item.SessionDate)</p>
+                    <p class="card-text text-truncate">Time: @Html.DisplayFor(modelItem => item.SessionHour)</p>
+                    <p class="card-text text-truncate">Coach: Daika Macron</p>
+                    <a asp-action="sessions" asp-route-id="@item.Id" class="btn btn-primary">View sessions</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+     
+        }

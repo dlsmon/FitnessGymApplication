@@ -20,11 +20,22 @@ namespace FitnessGymApplication.Controllers
         }
 
         // GET: TrainingProgram
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String searchString)
         {
-              return _context.TrainingProgram != null ? 
-                          View(await _context.TrainingProgram.ToListAsync()) :
-                          Problem("Entity set 'DBContext.TrainingProgram'  is null.");
+            if (_context.TrainingProgram == null)
+            {
+                return Problem("No Training Program found.");
+            }
+
+            var trainingProgram = from m in _context.TrainingProgram
+                                  select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                trainingProgram = trainingProgram.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await trainingProgram.ToListAsync());
         }
 
         // GET: TrainingProgram/Details/5
@@ -159,5 +170,32 @@ namespace FitnessGymApplication.Controllers
         {
           return (_context.TrainingProgram?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+        public async Task<IActionResult> Sessions(int id, string searchString)
+        {
+            if (_context.TrainingProgram.Find(id) == null)
+            {
+                string name = _context.TrainingProgram.Find(id).Name;
+                if (_context.TrainingProgram.Find(id).Sessions == null)
+                {
+                    return Problem("No Sessions available for the " + name + " Training Program found.");
+                }
+            }
+
+            ViewBag.TrainingProgram = _context.TrainingProgram.Find(id);
+
+            var sessions = from m in _context.Session.Where(s => s.IdTrainingProgram == id)
+                                  select m;
+
+            /*if (!String.IsNullOrEmpty(searchString))
+            {
+                sessions = sessions.Where(s => s.!.Contains(searchString));
+            }*/
+
+            return View(await sessions.ToListAsync());
+        }
+
+
     }
 }
