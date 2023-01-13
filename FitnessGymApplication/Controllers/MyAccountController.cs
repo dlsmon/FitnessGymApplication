@@ -14,12 +14,12 @@ namespace FitnessGymApplication.Controllers
             return View();
         }      
 
-        public IActionResult ChangePasseword()
+        public IActionResult ChangePassword()
         {
             return View();
         }
 
-        public IActionResult MySybscription()
+        public IActionResult MySubscription()
         {
             return View();
         }
