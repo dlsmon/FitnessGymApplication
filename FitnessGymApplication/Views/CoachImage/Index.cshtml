@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<FitnessGymApplication.Models.Coach>
-
 @{
     <div class="bp11hl_paragraph_reference field field--name-field-bp11hl-paragraph-reference field--type-entity-reference field--label-hidden field__item">
         <div class="paragraph paragraph-342 paragraph--type--bp11-header-light paragraph--view-mode--default">
@@ -23,7 +22,7 @@
  <div class="card">
               <div class="col">
                       <div class="card h-100">
-                      <img src="~/image/co.jfif">
+                        <img src="@item.Photo" height="200px" width="300px">
                       <div class="card-body">
                         <h5 class="card-title">
                         @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h5>
@@ -39,3 +38,5 @@
 }
     </tbody>
 </div>
+
+

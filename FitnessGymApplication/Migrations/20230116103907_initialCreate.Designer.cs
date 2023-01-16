@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessGymApplication.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230112093251_Tab")]
-    partial class Tab
+    [Migration("20230116103907_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -160,42 +160,47 @@ namespace FitnessGymApplication.Migrations
                             FirstName = " Quentin",
                             IdSpeciality = 1,
                             LastName = "H.",
-                            Photo = "/Assets/Images/Quentin H.jfif"
+                            Photo = ""
                         },
                         new
                         {
                             ID = 2,
                             FirstName = "Léonce",
                             IdSpeciality = 2,
-                            LastName = " L."
+                            LastName = " L.",
+                            Photo = ""
                         },
                         new
                         {
                             ID = 3,
                             FirstName = " Guillaume",
                             IdSpeciality = 3,
-                            LastName = " J."
+                            LastName = " J.",
+                            Photo = ""
                         },
                         new
                         {
                             ID = 4,
                             FirstName = " Anthony",
                             IdSpeciality = 1,
-                            LastName = " J."
+                            LastName = " J.",
+                            Photo = ""
                         },
                         new
                         {
                             ID = 5,
                             FirstName = " Romain",
                             IdSpeciality = 1,
-                            LastName = "G."
+                            LastName = "G.",
+                            Photo = ""
                         },
                         new
                         {
                             ID = 6,
                             FirstName = "Lia",
                             IdSpeciality = 4,
-                            LastName = "T."
+                            LastName = "T.",
+                            Photo = ""
                         });
                 });
 
@@ -369,7 +374,7 @@ namespace FitnessGymApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("Commitement")
+                    b.Property<int?>("Commitement")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -413,7 +418,7 @@ namespace FitnessGymApplication.Migrations
                         {
                             ID = 3,
                             Commitement = 1,
-                            Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            Description = "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio .",
                             FormulaRank = 2,
                             Name = "Classique fit 1",
                             Price = 29
@@ -431,7 +436,7 @@ namespace FitnessGymApplication.Migrations
                         {
                             ID = 5,
                             Commitement = 1,
-                            Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.",
+                            Description = "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur ",
                             FormulaRank = 3,
                             Name = "Premium fit 1",
                             Price = 39
@@ -440,7 +445,7 @@ namespace FitnessGymApplication.Migrations
                         {
                             ID = 6,
                             Commitement = 0,
-                            Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.",
+                            Description = "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date.",
                             FormulaRank = 3,
                             Name = "Premium fit 2",
                             Price = 44
@@ -970,6 +975,21 @@ namespace FitnessGymApplication.Migrations
                         {
                             Id = 4,
                             Name = "Cardio"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Renforcement"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Danse"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Perte de poids"
                         });
                 });
 

@@ -416,95 +416,113 @@ namespace FitnessGymApplication.Data.Seeding
             modelBuilder.Entity<Speciality>().HasData(
                 new Speciality()
                 {
-                    Id= 1,
+                    Id=1,
                     Name = "Yoga Expert"
                 });
             modelBuilder.Entity<Speciality>().HasData(
                 new Speciality()
                 {
-                    Id = 2,
+                    Id =2,
                     Name = "Bodybuilder"
                 });
             modelBuilder.Entity<Speciality>().HasData(
                 new Speciality()
                 {
-                    Id = 3,
+                    Id =3,
                     Name = "Hiit Expert"
                 });
             modelBuilder.Entity<Speciality>().HasData(
                 new Speciality()
                 {
-                    Id = 4,
+                    Id =4,
                     Name = "Cardio"
                 });
-            
+            modelBuilder.Entity<Speciality>().HasData(
+                new Speciality()
+                {
+                    Id =5,
+                    Name = "Renforcement"
+                });
+            modelBuilder.Entity<Speciality>().HasData(
+              new Speciality()
+              {
+                  Id =6,
+                  Name = "Danse"
+              });
+            modelBuilder.Entity<Speciality>().HasData(
+             new Speciality()
+             {
+                 Id =7,
+                 Name = "Perte de poids"
+             });
 
             //Coach 
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
-                {
-                    ID = 1,
-                    FirstName = " Quentin",
-                    LastName = "H.",
-                    //Photo = https://www.neoness.fr/sites/default/files/2019-12/Untitled%20design.jpg,                   
-                    IdSpeciality = 1,
-                    
-                });
-            modelBuilder.Entity<Coach>().HasData(
-            new Coach()
-                {
-                    ID = 2,
-                    FirstName = "Léonce",
-                    LastName = " L.",
-                    //Photo = "",
-                    IdSpeciality = 2,
-                    
-                });
+            //modelBuilder.Entity<Coach>().HasData(
+            //    new Coach()
+            //    {
+            //        ID = 1,
+            //        FirstName = " Quentin",
+            //        LastName = "H.",
+            //        Photo = "~/Content/Image/DELPHINE G.jpg",
+            //        //Photo = System.IO.Directory.GetFiles("~/Content/Image/fabricep.jfif"),            
+            //        IdSpeciality = 1,
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
-                {
-                    ID = 3,
-                    FirstName = " Guillaume",
-                    LastName = " J.",
-                    //Photo = "",
-                    IdSpeciality = 3,
-                    
-                });
+            //    });
+            //modelBuilder.Entity<Coach>().HasData(
+            //new Coach()
+            //{
+            //    ID = 2,
+            //    FirstName = "Léonce",
+            //    LastName = " L.",
+            //    Photo = "",
+            //    IdSpeciality = 2,
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
-                {
-                    ID = 4,
-                    FirstName = " Anthony",
-                    LastName = " J.",
-                    //Photo = "",
-                    IdSpeciality = 1,
-                    
-                });
+            //});
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
-                {
-                    ID = 5,
-                    FirstName = " Romain",
-                    LastName = "G.",
-                    //Photo = "",
-                    IdSpeciality = 1,
-                    
-                });
+            //modelBuilder.Entity<Coach>().HasData(
+            //    new Coach()
+            //    {
+            //        ID = 3,
+            //        FirstName = " Guillaume",
+            //        LastName = " J.",
+            //        Photo = "",
+            //        IdSpeciality = 3,
 
-            modelBuilder.Entity<Coach>().HasData(
-                new Coach()
-                {
-                    ID = 6,
-                    FirstName = "Lia",
-                    LastName = "T.",
-                    //Photo = "",
-                    IdSpeciality = 4,
-                    
-                });
+            //    });
+
+            //modelBuilder.Entity<Coach>().HasData(
+            //    new Coach()
+            //    {
+            //        ID = 4,
+            //        FirstName = " Anthony",
+            //        LastName = " J.",
+            //        Photo = "",
+            //        IdSpeciality = 1,
+
+            //    });
+
+            //modelBuilder.Entity<Coach>().HasData(
+            //    new Coach()
+            //    {
+            //        ID = 5,
+            //        FirstName = " Romain",
+            //        LastName = "G.",
+            //        Photo = "",
+            //        IdSpeciality = 1,
+
+            //    });
+
+            //modelBuilder.Entity<Coach>().HasData(
+            //    new Coach()
+            //    {
+            //        ID = 6,
+            //        FirstName = "Lia",
+            //        LastName = "T.",
+            //        Photo = "",
+            //        IdSpeciality = 4,
+
+            //    });
 
 
 
@@ -567,7 +585,7 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 15,
                     FormulaRank = 3,
                     IdTrainingProgram = 1,
-                    IdCoach = 1,
+                    IdCoach = 1001,
                     IdLocation = 2,
                 });
 
@@ -580,7 +598,7 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 20,
                     FormulaRank = 3,
                     IdTrainingProgram = 2,
-                    IdCoach = 5,
+                    IdCoach = 1002,
                     IdLocation = 7,
                 });
 
@@ -593,7 +611,7 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 30,
                     FormulaRank = 3,
                     IdTrainingProgram = 3,
-                    IdCoach = 5,
+                    IdCoach = 1003,
                     IdLocation = 9,
                 });
 
@@ -606,7 +624,7 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 22,
                     FormulaRank = 3,
                     IdTrainingProgram = 4,
-                    IdCoach = 3,
+                    IdCoach = 1004,
                     IdLocation = 8,
                 });
 
@@ -619,7 +637,7 @@ namespace FitnessGymApplication.Data.Seeding
                     MaxParticipants = 18,
                     FormulaRank = 3,
                     IdTrainingProgram = 2,
-                    IdCoach = 1,
+                    IdCoach = 1005,
                     IdLocation = 3,
                 });
 

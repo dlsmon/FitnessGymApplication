@@ -5,13 +5,14 @@ namespace FitnessGymApplication.Models
 {
     public class Speciality
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-        //public override string ToString()
-        //{
-        //    return $"{Name}";
-        //}
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FitnessGymApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class Tab : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,7 +65,7 @@ namespace FitnessGymApplication.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FormulaRank = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
-                    Commitement = table.Column<int>(type: "int", nullable: false)
+                    Commitement = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -468,10 +468,10 @@ namespace FitnessGymApplication.Migrations
                 {
                     { 1, 0, "Abonnement mensuel de 9€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", 1, "No Gym No Problem Month", 9 },
                     { 2, 0, "Abonnement annuel de 29€/mois sans engagement, sans période d'essai, seule la période en cours est due. Accès en illimités aux cours et programmes en ligne.", 1, "No Gym No Problem Year", 59 },
-                    { 3, 1, "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", 2, "Classique fit 1", 29 },
+                    { 3, 1, "L'abonnement mensuel CLASSIQUE FIT à 29€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio .", 2, "Classique fit 1", 29 },
                     { 4, 0, "L'abonnement mensuel CLASSIQUE FIT à 34€/mois vous donne accès à tous les clubs FITNESS GYM pour profiter de tous les appareils de musculations et cardio ainsi que de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", 2, "Classique fit 2", 34 },
-                    { 5, 1, "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est AVEC engagement sur une période de 12 mois et est valable de date à date.", 3, "Premium fit 1", 39 },
-                    { 6, 0, "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date. Seule la période en cours est due.", 3, "Premium fit 2", 44 }
+                    { 5, 1, "L'abonnement mensuel PREMIUM FIT à 36€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur ", 3, "Premium fit 1", 39 },
+                    { 6, 0, "L'abonnement mensuel PREMIUM FIT à 40€/mois vous donne accès à tous les clubs FITNESS GYM pour y pratiquer les activités de sports de fitness et musculation, participer à une multitude de cours ainsi profiter de l'accès aux piscines dans les conditions du règlement intérieur. Cet abonnement est SANS engagement et valable de date à date.", 3, "Premium fit 2", 44 }
                 });
 
             migrationBuilder.InsertData(
@@ -516,7 +516,10 @@ namespace FitnessGymApplication.Migrations
                     { 1, "Yoga Expert" },
                     { 2, "Bodybuilder" },
                     { 3, "Hiit Expert" },
-                    { 4, "Cardio" }
+                    { 4, "Cardio" },
+                    { 5, "Renforcement" },
+                    { 6, "Danse" },
+                    { 7, "Perte de poids" }
                 });
 
             migrationBuilder.InsertData(
@@ -544,12 +547,12 @@ namespace FitnessGymApplication.Migrations
                 columns: new[] { "ID", "FirstName", "IdSpeciality", "LastName", "Photo" },
                 values: new object[,]
                 {
-                    { 1, " Quentin", 1, "H.", "/Assets/Images/Quentin H.jfif" },
-                    { 2, "Léonce", 2, " L.", null },
-                    { 3, " Guillaume", 3, " J.", null },
-                    { 4, " Anthony", 1, " J.", null },
-                    { 5, " Romain", 1, "G.", null },
-                    { 6, "Lia", 4, "T.", null }
+                    { 1, " Quentin", 1, "H.", "" },
+                    { 2, "Léonce", 2, " L.", "" },
+                    { 3, " Guillaume", 3, " J.", "" },
+                    { 4, " Anthony", 1, " J.", "" },
+                    { 5, " Romain", 1, "G.", "" },
+                    { 6, "Lia", 4, "T.", "" }
                 });
 
             migrationBuilder.InsertData(
