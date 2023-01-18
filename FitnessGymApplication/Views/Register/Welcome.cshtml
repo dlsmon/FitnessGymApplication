@@ -4,22 +4,30 @@
 @{
     ViewData["Title"] = "Welcome to our community !";
 }
-<h1>@ViewData["Title"]</h1>
+
+<div style="text-align:center">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
 <br />
 
 <body>
-    
-    <h6> Please check your email adress and follow the instruction to verify your email adress. </h6>
-    <br />
 
-    <h4> One last step before enjoying our Training Programs !</h4>
-    <br />
-    <br />
+    <div class="welcome" style="text-align:center">
 
-    <form action="https://localhost:7222" method="get">
-        <button type="submit" class="btn btn-primary">Continue</button>
-    </form>
+        <h4> One last step before enjoying our Training Programs !</h4>
+        <br />
+        <br />
+
+        <h6> Please check your email adress and follow the instruction to verify your email adress. </h6>
+        <br />
+        <br />
+
+
+        <form action="https://localhost:7222" method="get">
+            <button type="submit" class="btn btn-primary">Continue</button>
+        </form>
+
+    </div>
 
 </body>
-
-
