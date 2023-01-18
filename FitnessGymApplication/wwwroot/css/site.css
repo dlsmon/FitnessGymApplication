@@ -4,6 +4,10 @@
     -ms-flex-align: end !important;
     align-items: flex-end !important;
 }
+.container{
+    padding:10px 10px 10px 10px;
+    padding-bottom:50px;
+}
 
 .row {
     display: -webkit-box;

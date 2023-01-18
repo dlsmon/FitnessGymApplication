@@ -16,6 +16,10 @@ namespace FitnessGymApplication.Models
         public string LastName { get; set; }
        
         public string? Photo { get; set; }
+        [NotMapped]
+        
+        public IFormFile? File { get; set; }
+
         [Display(Name = "Speciality")]
         public int? IdSpeciality { get; set; }
        
