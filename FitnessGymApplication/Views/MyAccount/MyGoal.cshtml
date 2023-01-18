@@ -130,16 +130,22 @@
                         <div class="card-body">
                             <form>
                                 <!-- Actual goal -->
-                                <h6 class="heading-small text-muted mb-4">Détails</h6>
+                                <h6 class="heading-small text-muted mb-4">Details</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-6">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-weight">Weight goal : </label>
                                                 <input type="text" id="input-weight" class="form-control form-control-alternative" disabled="disabled" placeholder="Weight" value="">
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-weight">For the date : </label>
+                                                <input type="date" id="input-date" class="form-control form-control-alternative" disabled="disabled" placeholder="2023/01/01" value="2023-01-01">
+                                            </div>                                           
+                                        </div>
+                                    </div><br />
                                     <div class="row">
                                         <div class="col-lg-8">
                                             <div class="form-group focused">
@@ -166,14 +172,21 @@
                                     </div> <br />                                   
                                 </div>
                                 <hr class="my-4">
+
                                 <!-- Update my goal -->
                                 <h6 class="heading-small text-muted mb-4">Update my goal</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-6">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-weight">Weight goal : </label>
                                                 <input type="text" id="input-weight" class="form-control form-control-alternative" placeholder="Weight" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-weight">For the date : </label>
+                                                <input type="date" id="input-date" class="form-control form-control-alternative" placeholder="2023/03/01" value="2023-03-01">
                                             </div>
                                         </div>
                                     </div>
@@ -196,8 +209,9 @@
                                     <div class="row">
                                         <div class="col-lg-8">
                                             <div class="form-group focused">
+                                                <label class="form-control-label" for="input-Frequency">Frequency goal :</label>
                                                 <select class="form-select" id="validationCustom04" required>
-                                                    <label class="form-control-label" for="input-Frequency">Frequency goal :</label>
+                                                    <!--<label class="form-control-label" for="input-Frequency">Frequency goal :</label>-->
                                                     <!--<input type="text" id="input-Frequency" class="form-control form-control-alternative" placeholder="Frequency goal:" value="">-->
                                                     <option class="form-control form-control-alternative" selected>Select your frequency goal : </option>
                                                     <option value="1">1</option>
@@ -215,6 +229,7 @@
                                     </div> <br />
                                 </div>
                                 <hr class="my-4">
+
                                 <!-- My Graph -->
                                 <h6 class="heading-small text-muted mb-4">My stats & graphics </h6>
                                 <div class="pl-lg-4">
