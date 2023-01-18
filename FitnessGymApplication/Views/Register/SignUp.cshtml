@@ -1,11 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+
 @{
     ViewData["Title"] = "I Join the Fitness Club Community !";
 }
+
+<!-- Syle CSS appliqué-->
+<link rel="stylesheet" media="screen" type="text/css" title="ledesigndetonindex" href="~/css/StyleAccount.css" />
+
+
+<!-- view html-->
 
 <h1>@ViewData["Title"]</h1>
 <br />
@@ -16,100 +19,107 @@
     <header>
     </header>
 
-    <section>
+    <div>
+        <section>
 
-        <h5>My User Account</h5>
+            <h5>My User Account</h5>
 
-        <p> Gender: </p>
+            <p> Gender: </p>
 
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Select your gender</option>
-            <option value="1">Woman</option>
-            <option value="2">Man</option>
-        </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Select your gender</option>
+                <option value="1">Woman</option>
+                <option value="2">Man</option>
+            </select>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Firstname:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Fistname">
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Firstname:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Fistname">
+            </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Lastname:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Lastname">
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Lastname:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Lastname">
+            </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Birthdate:</label>
-            <input type="date" class="form-control" id="exampleFormControlInput1" value="1990-01-01" placeholder="1990/01/01">
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Birthdate:</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1" value="1990-01-01" placeholder="1990/01/01">
+            </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address:</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address:</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Password:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Password">
-            <div id="emailHelp" class="form-text">Must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji..</div>
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                <div id="emailHelp" class="form-text">Must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji..</div>
+            </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Confirm Password:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Confirm Password:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
+            </div>
 
-    </section>
-    <br />
-
-    <section>
-
-        <h5>My Informations</h5>
-
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Cellphone number:</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Cellphone number">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Adress:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Adress">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Zip Code:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Zip Code">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">City:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City">
-        </div>
-
+        </section>
         <br />
 
-        <p class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                I accept the general user condition
-            </label>
-        </p>
+        <section>
 
-        <p class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-                I want to receive the current offers, tips and deals of the Fitness Club. I do not want to miss !
-            </label>
-        </p>
+            <h5>My Informations</h5>
 
-        <br />       
 
-        <form action="https://localhost:7222/register/MyQuiz" method="get">
-            <button type="submit" class="btn btn-primary">Continue</button>
-        </form>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Cellphone number:</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Cellphone number">
+            </div>
 
-    </section>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Adress:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Adress">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Zip Code:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Zip Code">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">City:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City">
+            </div>
+
+            <br />
+
+            <p class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    I accept the general user condition
+                </label>
+            </p>
+
+            <p class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    I want to receive the current offers, tips and deals of the Fitness Club. I do not want to miss !
+                </label>
+            </p>
+
+            <br />
+
+            <form action="https://localhost:7222/register/MyQuiz" method="get">
+                <button type="submit" class="btn btn-primary">Continue</button>
+            </form>
+
+        </section>
+
+    </div> 
+
+    <br />
+    <br />
+    <br />
 
 
 </body>

@@ -1,8 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
+
+<!-- Syle CSS appliqué-->
+<link rel="stylesheet" media="screen" type="text/css" title="ledesigndetonindex" href="~/css/StyleAccount.css" />
+
+
+<!-- view html-->
 
 <body>
 
@@ -138,29 +142,43 @@
                                     <div class="row">
                                         <div class="col-lg-8">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-CaloriesBurnt">Calories burned target:</label>
+                                                <label class="form-control-label" for="input-CaloriesConsumed">Calories Consumed target (per week):</label>                                             
+                                                <input type="text" id="input-CaloriesBurnt" class="form-control form-control-alternative" placeholder="Calories Consumed target:" value="">
+                                            </div>
+                                        </div>
+                                    </div> <br />
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-CaloriesBurnt">Calories burned target (per week):</label>
                                                 <input type="text" id="input-CaloriesBurnt" class="form-control form-control-alternative" placeholder="Calories burned target:" value="">
                                             </div>
                                         </div>
                                     </div> <br />
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <select class="form-group focused" aria-label="Default select example">
-                                                <label class="form-control-label" for="input-Frequency">Frequency goal : </label>
-                                                <!--<input type="text" id="input-Frequency" class="form-control form-control-alternative" placeholder="Frequency" value="">-->
-                                                <option selected>Select your frequency</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>                                      
-                                            </select>
+                                            <div class="form-group focused">
+                                                <select class="form-select" id="validationCustom04" required>                                                  
+                                                    <label class="form-control-label" for="input-Frequency">Frequency goal :</label>
+                                                    
+                                                    <!--<input type="text" id="input-Frequency" class="form-control form-control-alternative" placeholder="Frequency goal:" value="">-->
+                                                    <option class="form-control form-control-alternative" selected>Select your frequency goal : </option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+
+                                                </select>
+                                                
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> <br />
+                                    
                                 </div>
-                                <hr class="my-4">
+                                
                             </form>
                         </div>
                     </div>
@@ -170,6 +188,9 @@
 
 
     </div>
+    <br />
+    <br />
+    <br />
 
 
 
