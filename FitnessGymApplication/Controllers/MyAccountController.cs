@@ -38,7 +38,11 @@ namespace FitnessGymApplication.Controllers
         {
             return View();
         }
-              
+
+        public IActionResult MyStatGraph()
+        {
+            return View();
+        }
 
 
     }
